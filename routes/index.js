@@ -23,7 +23,6 @@ function verifyToken(user){
 
 
 router.post('/auth/facebook', function(req,res){
-  console.log("hitting this");
   var fields = ['id', 'email', 'first_name', 'last_name', 'name'];
   var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
   var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + fields.join(',');
