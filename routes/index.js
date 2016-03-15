@@ -75,15 +75,19 @@ router.post('/user', function(req, res){
   res.send(user)
 })
 
-router.post('/post', function(req, res, next){
-  var post ={}
+router.post('/new/post', function(req, res, next){
+var post ={}
 post.facebook_id = req.body.facebook_id
 post.author = req.body.author
 post.title = req.body.title
 post.author = req.body.author
-post.address = address
+post.address = req.body.location
 post.picture_url = req.body.picture_url
 post.description = req.body.description
+
+Posts().insert(post).then(function(result){
+  res.send("succesful post!")
+})
 
 })
 

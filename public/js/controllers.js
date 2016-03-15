@@ -54,9 +54,12 @@ app.controller("newController", function($scope, $http, posts){
       post.facebook_id = result.facebook_id;
       post.author = result.name
       post.title = $scope.title
+      post.location = $scope.location
+      post.child_name = $scope.child_name
       post.description = $scope.description
-      post.picture_url = $scope.picture_url
-      $http.post('post', post).then(function(response){
+      post.picture_url = "null"
+      console.log(post);
+      $http.post('new/post', post).then(function(response){
         console.log(response);
         window.location.href = '/#/post';
       })

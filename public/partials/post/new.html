@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class='row newRow'>
-    <form ng-submit="submitPost()">
+    <form>
       <div class='textPostDiv col-md-2 col-xs-12 col-s-12'>
         <h3>Author: {{author_name}}</h3>
         <img class='img-responsive center-block' src="{{author_picture}}">
@@ -15,21 +15,21 @@
           <div class='form-group textPostDiv col-md-12 col-xs-12 col-s-12'>
             <label for="postTitle">Title</label>
             <br>
-            <input class='form-control' type="text" name="postTitle" ng-model="postTitle">
+            <input class='form-control' type="text" name="postTitle" ng-model="title">
           </div>
         </div>
         <div class='row'>
           <div class='textPostDiv form-group col-md-12 col-xs-12 col-s-12'>
             <label for="locationOfActivity">Location</label>
             <br>
-            <input class='form-control' type="text" name="locationOfActivity" ng-model="locationOfActivity">
+            <input class='form-control' type="text" name="locationOfActivity" ng-model="location">
           </div>
         </div>
         <div class='row'>
           <div class='form-group textPostDiv col-md-12 col-xs-12 col-s-12'>
             <label for="childName">Child's Name</label>
             <br>
-            <input class='form-control' type="text" name="childName" ng-model="childName">
+            <input class='form-control' type="text" name="childName" ng-model="child_name">
           </div>
         </div>
         <div class='row'>
@@ -52,7 +52,7 @@
     </div>
     <div class='row'>
       <div class='textPostDiv form-group col-md-12 col-xs-12 col-s-12'>
-        <button type="submit" class='btn btn-primary' name="addPostButton">Add Post</button>
+        <button type="submit" class='btn btn-primary' ng-click="submitPost()">Add Post</button>
       </form>
       </div>
     </div>
