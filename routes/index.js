@@ -79,6 +79,7 @@ router.post('/new/post', function(req, res, next){
 var post ={}
 post.facebook_id = req.body.facebook_id
 post.author = req.body.author
+post.author_pic = req.body.author_pic
 post.title = req.body.title
 post.author = req.body.author
 post.address = req.body.location
