@@ -20,6 +20,10 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
    templateUrl: 'partials/home.html',
    controller: 'mainController'
  })
+ .when('/home', {
+   templateUrl: 'partials/home.html',
+   controller: 'mainController'
+ })
  .when('/posts',{
    templateUrl: 'partials/post/index.html',
    controller: 'postController'
