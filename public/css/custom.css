@@ -49,6 +49,16 @@ body{
   border-radius: 5px;
 }
 
+.postListDiv{
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 0 auto;
+  width: 70vw;
+  clear: both;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
 .signDiv{
   background-color: rgba(255, 255, 255, 0.8);
   margin: 0 auto;
@@ -246,4 +256,8 @@ body{
 .white{
   color: white;
   margin-top: 20px;
+}
+
+.feedContainer{
+  margin-top: 170px;
 }
