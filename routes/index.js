@@ -71,7 +71,11 @@ router.get('/posts', function(req,res,next){
 router.post('/user', function(req, res){
   var token = req.body.token
   var user = verifyToken(token)
-  res.send(user)
+  Users().where('facebook_id', user.facebook_id).first().then(function(result){
+    res.send(result)
+    console.log(result);
+  })
+
 })
 
 //Adding posts
