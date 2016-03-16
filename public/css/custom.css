@@ -314,3 +314,9 @@ body{
 .glyph:hover{
   color: #4ea0c5;
 }
+
+#footer{
+  position: absolute;
+  bottom: 0;
+  background: none;
+}
