@@ -39,6 +39,16 @@ body{
   border-radius: 5px;
 }
 
+.newPostDiv{
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 0 auto;
+  width: 70vw;
+  clear: both;
+  margin-top: 135px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
 .postDivProfile{
   background-color: rgba(255, 255, 255, 0.7);
   margin: 0 auto;
@@ -288,6 +298,15 @@ body{
   margin-top: 30px;
 }
 
-.shrink{
-  height: 80%;
+/*.shrink{
+  height: 30%;
+}*/
+
+.glyph{
+  font-size: 1.5em;
+  transition: .2s;
+}
+
+.glyph:hover{
+  color: #4ea0c5;
 }
