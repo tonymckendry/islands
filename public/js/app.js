@@ -33,10 +33,6 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
   templateUrl: 'partials/post/new.html',
   controller: 'newController'
 })
- .when('/profile',{
-  templateUrl: 'partials/profile/show.html',
-  controller: 'profileController'
-})
  .when('/about',{
   templateUrl: 'partials/about.html',
   controller: 'mainController'
@@ -44,6 +40,10 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
  .when('/contact',{
   templateUrl: 'partials/contact.html',
   controller: 'mainController'
+})
+.when('/profile',{
+  templateUrl: 'partials/profile/show.html',
+  controller: 'profileController'
 })
 
  $locationProvider.html5Mode(true);

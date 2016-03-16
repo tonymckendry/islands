@@ -91,9 +91,16 @@ Posts().insert(post).then(function(result){
 
 })
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.post('/getposts', function(req, res, next){
+  Posts().where('facebook_id', req.body.facebook_id).then(function(response){
+    res.send(response)
+    })
+  })
+
+
+// /* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
 module.exports = router;
