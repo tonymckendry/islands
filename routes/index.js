@@ -54,7 +54,7 @@ router.post('/auth/facebook', function(req,res){
               console.log(error);
             }).then(function(){
               res.send({token: token})
-              // console.log("Successfull insert. Token is: "+token);
+              res.redirect('/posts')
             })
 
       })

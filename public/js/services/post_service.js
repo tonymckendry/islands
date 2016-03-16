@@ -26,5 +26,11 @@ this.getPostById = function(facebook_id){
 
 }
 
+this.isLoggedIn = function () {
+  var token = localStorage.getItem('satellizer_token')
+  return token ? true : false;
+
+}
+
 
 })

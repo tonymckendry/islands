@@ -85,15 +85,15 @@
 
 
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
+          <div id="navbar" class="navbar-collapse collapse" ng-controller="navController">
             <ul id="top-menu" class="nav navbar-nav navbar-right main_nav">
               <li ><a href="home" >Home</a></li>
               <li ng-click="setNavTab()"><a ng-style="{'color': color.about}" href="about">About</a></li>
               <li><a href="contact">Contact</a></li>
               <li><a href="login">Sign In</a></li>
-              <li><a href="#" ng-click="logout()">Logout</a></li>
-              <li><a href="profile">Profile</a></li>
-              <li><a href="newpost">&#43 Add Activity</a></li>
+              <li><a href="home" ng-click="logout()" ng-show="loggedInNav">Logout</a></li>
+              <li><a href="profile" ng-show="loggedInNav">Profile</a></li>
+              <li><a href="newpost" ng-show="loggedInNav">&#43 Add Activity</a></li>
             </ul>
           </div><!--/.nav-collapse -->
           </div>
@@ -146,6 +146,7 @@
    <script type="text/javascript" src="js/controllers/postController.js"></script>
    <script type="text/javascript" src="js/controllers/profileController.js"></script>
    <script type="text/javascript" src="js/controllers/newController.js"></script>
+   <script type="text/javascript" src="js/controllers/navController.js"></script>
    <script type="text/javascript" src="js/services/post_service.js"></script>
   </body>
 </html>
