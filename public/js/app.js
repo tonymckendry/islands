@@ -46,6 +46,11 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
   templateUrl: 'partials/profile/show.html',
   controller: 'profileController'
 })
+ .when('/profile/new',{
+  templateUrl: 'partials/profile/new.html',
+  controller: 'profileController'
+})
+
  .when('/about',{
   templateUrl: 'partials/about.html',
   controller: 'mainController'

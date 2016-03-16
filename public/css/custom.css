@@ -250,7 +250,7 @@ body{
 
 .profilePoints h2{
   margin-top: 25px;
-  font-size: 7em;
+  font-size: 6em;
 }
 
 .white{
@@ -260,4 +260,8 @@ body{
 
 .feedContainer{
   margin-top: 170px;
+}
+
+.newBio{
+  width: 90%;
 }
