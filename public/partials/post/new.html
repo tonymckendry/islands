@@ -1,4 +1,4 @@
-<div class='container postDiv'>
+<div class='container postDiv shrink'>
   <div class='row'>
     <div class='textPostDiv col-md-12 col-xs-12 col-s-12'>
       <h2 class='mid'>Add a New Activity!</h2>
@@ -23,15 +23,16 @@
             <label for="locationOfActivity">Location</label>
             <br>
             <input class='form-control' type="text" name="locationOfActivity" ng-model="location">
-          </div>
-        </div>
-        <div class='row'>
-          <div class='form-group textPostDiv col-md-12 col-xs-12 col-s-12'>
-            <label for="childName">Child's Name</label>
             <br>
-            <input class='form-control' type="text" name="childName" ng-model="child_name">
+            <label for="hours">Hours of Activity</label>
+            <br>
+            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true" ng-click="hoursPlus()"></span>
+            <h2>{{hours}}</h2>
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" ng-click="hoursMinus()"></span>
           </div>
         </div>
+      </div>
+      <div class='textPostDiv col-md-5 col-xs-12 col-s-12'>
         <div class='row'>
           <div class='form-group textPostDiv col-md-12 col-xs-12 col-s-12'>
             <label for="description">Description</label>
@@ -39,22 +40,25 @@
             <textarea rows='4' class='form-control' type="text" name="description" ng-model="description"></textarea>
           </div>
         </div>
-      </div>
-      <div class='textPostDiv form-group hoursDiv col-md-2 col-xs-12 col-s-12'>
-        <label for="hours">Hours of Activity</label>
-        <br>
-        <input type='number' name= "hours" ng-model="hours"  placeholder='0' class='form-control hours'>
-      </div>
-      <div class='textPostDiv col-md-3 col-xs-12 col-s-12'>
-        <h3>Photo Uploader</h3>
-        <input type = "file" value = "Browse...">
-      </div>
-    </div>
-    <div class='row'>
-      <div class='textPostDiv form-group col-md-12 col-xs-12 col-s-12'>
-        <button type="submit" class='btn btn-primary' ng-click="submitPost()">Add Post</button>
-      </form>
+        <div class='row'>
+          <div class='textPostDiv col-md-12 col-xs-12 col-s-12'>
+            <h3>Photo Uploader</h3>
+            <input type = "file" value = "Browse...">
+            <div class='row'>
+              <div class='textPostDiv form-group col-md-12 col-xs-12 col-s-12 submitButtonDiv'>
+                <button type="submit" class='btn btn-primary btn-lg' ng-click="submitPost()">Add Post</button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+</div>
+
+
+
+
+
   </div>
 </div>
