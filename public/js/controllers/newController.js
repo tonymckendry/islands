@@ -16,6 +16,7 @@ app.controller("newController", function($scope, $http, posts){
       post.child_name = $scope.child_name;
       post.description = $scope.description;
       post.picture_url = "null"
+      post.hours = $scope.hours
       console.log(post);
       $http.post('new/post', post).then(function(response){
         console.log(response);

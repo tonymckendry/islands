@@ -21,7 +21,7 @@ function verifyToken(user){
 }
 
 
-
+//Satellizer route that authenticates the user and logs them in.
 router.post('/auth/facebook', function(req,res){
   var fields = ['id', 'email', 'first_name', 'last_name', 'name'];
   var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
@@ -47,8 +47,7 @@ router.post('/auth/facebook', function(req,res){
           user.first_name = profile.first_name
           user.last_name = profile.last_name
           user.name = profile.name;
-          console.log("**********");
-          console.log(user);
+          user.total_hours = 0;
           var token = createToken(user)
           Users().insert(user)
             .catch(function(error){
@@ -62,18 +61,24 @@ router.post('/auth/facebook', function(req,res){
     });
 })
 
+//Gets and and allows us to display all posts
 router.get('/posts', function(req,res,next){
   Posts().select().then(function(response){
     res.send(response)
   })
 })
-
+//Verify User Logged in: getting user information
 router.post('/user', function(req, res){
   var token = req.body.token
   var user = verifyToken(token)
-  res.send(user)
+  Users().where('facebook_id', user.facebook_id).first().then(function(result){
+    res.send(result)
+    console.log(result);
+  })
+
 })
 
+//Adding posts
 router.post('/new/post', function(req, res, next){
 var post ={}
 post.facebook_id = req.body.facebook_id
@@ -84,6 +89,19 @@ post.author = req.body.author
 post.address = req.body.location
 post.picture_url = req.body.picture_url
 post.description = req.body.description
+post.hours = req.body.hours
+
+//update total number of hours for user when they make a post
+// does math to calculate total hours for user.
+Users().where('facebook_id', req.body.facebook_id).first().then(function(result){
+  var old_hours = result.total_hours;
+  var hours = req.body.hours;
+  var new_hours = old_hours + hours;
+  Users().where('facebook_id', result.facebook_id).update('total_hours', new_hours).then(function(result){
+    console.log("success!");
+  })
+
+})
 
 Posts().insert(post).then(function(result){
   res.send("succesful post!")
@@ -91,9 +109,17 @@ Posts().insert(post).then(function(result){
 
 })
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+//Show posts on the profile for user you have selected.
+router.post('/getposts', function(req, res, next){
+  Posts().where('facebook_id', req.body.facebook_id).then(function(response){
+    res.send(response)
+    })
+  })
+
+
+// /* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
 module.exports = router;
