@@ -15,7 +15,7 @@ app.controller('mainController', function($scope, $location, $auth) {
        .then(function(response) {
          console.log('You have successfully signed in with ' + provider + '!');
          console.log(response.data.token);
-         $location.path('/post');
+         $location.path('/posts');
        })
        .catch(function(error) {
          if (error.error) {

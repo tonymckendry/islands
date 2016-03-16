@@ -20,7 +20,7 @@ app.controller("newController", function($scope, $http, posts){
       console.log(post);
       $http.post('new/post', post).then(function(response){
         console.log(response);
-        window.location.href = '/#/post';
+        window.location.href = '/#/posts';
       })
     })
   }
