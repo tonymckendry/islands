@@ -230,9 +230,23 @@ body{
   margin: 0 auto;
 }
 
+.goalHours{
+  font-size: 4em;
+  height: 100%;
+  width: 170%;
+}
+
+.goal{
+  font-size: 3em;
+}
+
 .hoursDiv{
   margin-top: 37px;
   text-align: center;
+}
+
+.hoursDiv h2{
+  font-size: 5em;
 }
 
 .newRow{
@@ -264,4 +278,16 @@ body{
 
 .newBio{
   width: 90%;
+}
+
+.newProg{
+  margin-top: -20px;
+}
+
+.submitButtonDiv{
+  margin-top: 30px;
+}
+
+.shrink{
+  height: 80%;
 }

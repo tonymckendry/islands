@@ -5,6 +5,25 @@ app.controller("newController", function($scope, $http, posts){
 
   })
 
+  $scope.hours = 0;
+
+  $scope.hoursPlus = function(){
+    if ($scope.hours == 5){
+
+    }
+    else{
+      $scope.hours++
+    }
+  }
+  $scope.hoursMinus = function(){
+    if ($scope.hours == 0){
+
+    }
+    else{
+      $scope.hours--
+    }
+  }
+
   $scope.submitPost = function(){
     posts.getUserData().then(function(result){
       var post = {};

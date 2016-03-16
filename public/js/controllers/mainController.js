@@ -1,4 +1,4 @@
-app.controller('mainController', function($scope, $location, $auth) {
+app.controller('mainController', function($scope, $rootScope, $location, $auth) {
 
    $scope.login = function() {
      $auth.login($scope.user)
@@ -32,5 +32,16 @@ app.controller('mainController', function($scope, $location, $auth) {
    $scope.logout = function(){
      $auth.logout()
      console.log("successfully logged out!");
+   }
+   $rootScope.active = {};
+   $rootScope.active.home = true;
+   $rootScope.color = {};
+   $rootScope.color.home = 'deepskyblue';
+   $rootScope.color.about = 'white';
+
+   $rootScope.setNavTab = function(){
+     $rootScope.color.about = 'deepskyblue';
+     console.log($rootScope.color.about);
+     console.log("****WORKING***");
    }
  });
