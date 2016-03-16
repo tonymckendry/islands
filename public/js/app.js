@@ -20,19 +20,28 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
    templateUrl: 'partials/home.html',
    controller: 'mainController'
  })
- .when('/post',{
+ .when('/posts',{
+   templateUrl: 'partials/post/index.html',
+   controller: 'postController'
+ })
+ .when('/posts/:id',{
    templateUrl: 'partials/post/show.html',
    controller: 'postController'
  })
+ .when('/posts/:id/edit',{
+   templateUrl: 'partials/post/edit.html',
+   controller: 'postController'
+ })
+ .when('/newpost',{
+   templateUrl: 'partials/post/new.html',
+   controller: 'newController'
+ })
+
  .when('/login', {
    templateUrl: 'partials/login.html',
    controller: 'mainController'
  })
 
- .when('/new',{
-  templateUrl: 'partials/post/new.html',
-  controller: 'newController'
-})
  .when('/profile',{
   templateUrl: 'partials/profile/show.html',
   controller: 'profileController'
