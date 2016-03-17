@@ -269,7 +269,11 @@ body{
 
 .btn-primary{
   background-color: #4ea0c5;
-  transition: .5s;
+  border: 1px solid #4ea0c5;
+}
+
+.btn{
+    transition: .5s;
 }
 
 .profilePoints{

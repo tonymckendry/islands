@@ -1,5 +1,6 @@
-app.controller('mainController', function($scope, $rootScope, $location, $auth) {
-  $scope.loggedIn = false;
+app.controller('mainController', function($scope, $rootScope, $location, $auth, $state) {
+  var myVar = false;
+  $scope.loggedIn = myVar;
   $scope.logIn = true;
    $scope.login = function() {
      $auth.login($scope.user)
@@ -12,12 +13,12 @@ app.controller('mainController', function($scope, $rootScope, $location, $auth) 
        });
    };
    $scope.authenticate = function(provider) {
-     $scope.loggedIn = true;
      $auth.authenticate(provider)
        .then(function(response) {
+         navs.login();
          console.log('You have successfully signed in with ' + provider + '!');
          console.log(response.data.token);
-         $location.path('/posts');
+         $state.go('home',{},{reload:'true'});
        })
        .catch(function(error) {
          if (error.error) {
