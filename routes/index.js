@@ -9,8 +9,8 @@ var fs = require('fs')
 
 cloudinary.config({
   cloud_name: 'sample',
-  api_key: '196933469867677',
-  api_secret: '3oaPQ2QV5J58vC80es5ymoXK50c'
+  api_key: '
+  api_secret: '
 
 });
 
