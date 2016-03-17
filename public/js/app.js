@@ -73,6 +73,10 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
   templateUrl: 'partials/profile/show.html',
   controller: 'profileController'
 })
+.when('/admin', {
+  templateUrl: 'partials/admin.html',
+  controller: 'postController'
+})
 
  $locationProvider.html5Mode(true);
 
