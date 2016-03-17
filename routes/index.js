@@ -113,7 +113,7 @@ post.picture_url = result.secure_url
 Users().where('facebook_id', req.body.facebook_id).first().then(function(result){
   var old_hours = result.total_hours;
   var hours = req.body.hours;
-  var new_hours = old_hours + hours;
+  var new_hours = Number(old_hours) + Number(hours);
   Users().where('facebook_id', result.facebook_id).update('total_hours', new_hours).then(function(result){
     console.log("hours updated");
   })
