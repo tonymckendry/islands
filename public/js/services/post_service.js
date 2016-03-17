@@ -32,6 +32,12 @@ this.isLoggedIn = function () {
 
 }
 
+this.allUser = function (){
+  return $http.get('alluser').then(function(response){
+    return response.data
+  })
+}
+
 
 })
 

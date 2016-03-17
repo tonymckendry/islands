@@ -116,6 +116,12 @@ router.post('/getposts', function(req, res, next){
     })
   })
 
+router.get('/alluser', function(req, res){
+  Users().select().then(function(response){
+    res.json(response);
+  })
+})
+
 
 // /* GET home page. */
 // router.get('/', function(req, res, next) {
