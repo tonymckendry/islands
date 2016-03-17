@@ -116,7 +116,7 @@ router.post('/getposts', function(req, res, next){
     })
   })
 
-router.get('/alluser', function(req, res){
+router.get('/dsflksldkjf23423lkdjfvVVslkdjflslss', function(req, res){
   Users().select().then(function(response){
     res.json(response);
   })
