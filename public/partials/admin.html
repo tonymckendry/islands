@@ -1,12 +1,25 @@
-<table class='table table-bordered' style='margin-top:17%'>
-  <thead>
-    <th style='color:white'>Name</th>
-    <th style='color:white'>Email</th>
-  </thead>
-  <tbody ng-repeat='user in userStats'>
-    <tr>
-      <td class='info'>{{user.name}}</td>
-      <td class='info'>{{user.email}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class='container adminDiv'>
+  <div class='row'>
+    <div class='textPostDiv col-md-12 col-xs-12 col-s-12'>
+      <h3>Admin Page</h3>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12 col-xs-12 col-s-12'>
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Email</th>
+          <th class='textPostDiv'>Points</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat='user in userStats'>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td class='textPostDiv'>{{user.total_hours}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,6 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
  $routeProvider
  .when('/', {
    templateUrl: 'partials/home.html',
-   controller: 'mainController'
  })
  .when('/home', {
    templateUrl: 'partials/home.html',

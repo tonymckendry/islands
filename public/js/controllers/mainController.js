@@ -1,7 +1,7 @@
-app.controller('mainController', function($scope, $rootScope, $location, $auth, $state) {
-  var myVar = false;
-  $scope.loggedIn = myVar;
-  $scope.logIn = true;
+app.controller('mainController', function($scope, $rootScope, $location, $auth) {
+  $scope.user = {}
+  // $scope.loggedIn = false;
+  // $scope.logIn = true;
    $scope.login = function() {
      $auth.login($scope.user)
        .then(function() {
@@ -15,10 +15,9 @@ app.controller('mainController', function($scope, $rootScope, $location, $auth, 
    $scope.authenticate = function(provider) {
      $auth.authenticate(provider)
        .then(function(response) {
-         navs.login();
          console.log('You have successfully signed in with ' + provider + '!');
          console.log(response.data.token);
-         $state.go('home',{},{reload:'true'});
+         $location.path('/posts')
        })
        .catch(function(error) {
          if (error.error) {
@@ -56,13 +55,13 @@ app.controller('mainController', function($scope, $rootScope, $location, $auth, 
     console.log("successfully logged out!");
   }
 
-  if(localStorage.satellizer_token){
-    $scope.logIn = false;
-    $scope.loggedIn = true;
-  }
+  $rootScope.$on('$locationChangeSuccess', function(){
+      if(localStorage.satellizer_token){
+        // $scope.logIn = false;
+        $scope.user.session = true;
+      }
+  })
+
   console.log("Logged in: " + $scope.loggedIn);
-
-
-
 
  });

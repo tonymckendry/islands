@@ -83,6 +83,16 @@ body{
   border-radius: 5px;
   transition: .5s;
 }
+.adminDiv{
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 0 auto;
+  width: 70vw;
+  clear: both;
+  margin-top: 135px;
+  padding: 20px;
+  border-radius: 5px;
+  transition: .5s;
+}
 
 .textPostDiv{
   text-align: center;
@@ -323,4 +333,23 @@ body{
   position: absolute;
   bottom: 0;
   background: none;
+}
+
+table{
+  margin: 0 auto;
+  width: 100%;
+}
+
+td{
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding: 10px;
+}
+
+thead{
+  border-bottom: 1px solid black;
+}
+
+th{
+  padding: 10px;
 }
