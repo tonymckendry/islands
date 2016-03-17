@@ -87,12 +87,14 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse" ng-controller="mainController">
             <ul id="top-menu" class="nav navbar-nav navbar-right main_nav">
-              <li ><a href="home" >Home</a></li>
+              <li ng-show="!user.session"><a href="home" >Home</a></li>
+              <li ng-show="user.session"><a href="posts">Feed</a></li>
               <li ng-click="setNavTab()"><a ng-style="{'color': color.about}" href="about">About</a></li>
               <li><a href="contact">Contact</a></li>
-              <li><a href="login">Sign In</a></li>
+              <li ng-show="!user.session"><a href="login">Sign In</a></li>
               <li ng-show="user.session"><a href="home" ng-click="logout()">Logout</a></li>
               <li ng-show="user.session"><a href="profile" >Profile</a></li>
+              <li ng-show='isAdmin'><a href="admin">Admin</a></li>
               <li ng-show="user.session"><a href="newpost">&#43 Add Activity</a></li>
             </ul>
           </div><!--/.nav-collapse -->
