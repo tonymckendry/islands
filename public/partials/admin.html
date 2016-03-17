@@ -2,11 +2,14 @@
   <thead>
     <th style='color:white'>Name</th>
     <th style='color:white'>Email</th>
+    <th style='color:white'>Total Points</th>
+
   </thead>
   <tbody ng-repeat='user in userStats'>
     <tr>
       <td class='info'>{{user.name}}</td>
       <td class='info'>{{user.email}}</td>
+      <td class='info'>{{user.total_hours}}</td>
     </tr>
   </tbody>
 </table>
