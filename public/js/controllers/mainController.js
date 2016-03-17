@@ -43,6 +43,21 @@ app.controller('mainController', function($scope, $rootScope, $location, $auth) 
      console.log($rootScope.color.about);
      console.log("****WORKING***");
    }
+$scope.loggedIn = true;
+$scope.logIn = true;
+
+
+
+  $scope.logout = function(){
+    $auth.logout()
+    console.log("successfully logged out!");
+  }
+
+  if(localStorage.satellizer_token){
+    $scope.logIn = false;
+    $scope.loggedIn = true;
+  }
+  console.log("Logged in: " + $scope.loggedIn);
 
 
 

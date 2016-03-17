@@ -85,13 +85,13 @@
 
 
           </div>
-          <div id="navbar" class="navbar-collapse collapse" ng-controller="navController">
+          <div id="navbar" class="navbar-collapse collapse">
             <ul id="top-menu" class="nav navbar-nav navbar-right main_nav">
               <li ><a href="home" >Home</a></li>
               <li ng-click="setNavTab()"><a ng-style="{'color': color.about}" href="about">About</a></li>
               <li><a href="contact">Contact</a></li>
               <li ng-show="logIn"><a href="login">Sign In</a></li>
-              <li ng-show="loggedIn"><a href="home" ng-click="logout()">Logout</a></li>
+              <li ng-show=loggedIn><a href="home" ng-click="logout()">Logout</a></li>
               <li ng-show="loggedIn"><a href="profile" >Profile</a></li>
               <li ng-show="loggedIn"><a href="newpost">&#43 Add Activity</a></li>
             </ul>
@@ -106,6 +106,28 @@
     <!--=========== End HEADER SECTION ================-->
     <base href='/'>
     <div ng-view></div>
+
+    <!-- <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="footer_left">
+              <p>Copyright &copy; 2016 All Rights Reserved</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="footer_right">
+              <ul class="social_nav">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+     </footer> -->
 
 
 
