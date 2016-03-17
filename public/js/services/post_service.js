@@ -31,9 +31,14 @@ this.isLoggedIn = function () {
   return token ? true : false;
 
 }
+this.getUserById = function(id){
+  return $http.get('user/'+ id).then(function(response){
+    return response.data
+  })
+}
 
 this.allUser = function (){
-  return $http.get('alluser').then(function(response){
+  return $http.get('dsflksldkjf23423lkdjfvVVslkdjflslss').then(function(response){
     return response.data
   })
 }
