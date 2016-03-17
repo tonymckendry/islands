@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/full-slider/full-slide1.jpg");
+    background-image: url("../img/full-slider/full-slide2.jpg");
     background-size: cover;
     background-attachment: fixed, scroll;
 }
@@ -162,6 +162,9 @@ body{
 
 .activityPic{
   vertical-align: middle;
+  width: inherit;
+  width: 60%;
+  margin-top: -25px;
 }
 
 .row{
@@ -352,4 +355,8 @@ thead{
 
 th{
   padding: 10px;
+}
+
+.postTitle{
+  font-size: 10em;
 }
