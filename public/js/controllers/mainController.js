@@ -1,4 +1,6 @@
 app.controller('mainController', function($scope, $rootScope, $location, $auth) {
+  $scope.loggedIn = false;
+  $scope.logIn = true;
    $scope.login = function() {
      $auth.login($scope.user)
        .then(function() {
@@ -10,6 +12,7 @@ app.controller('mainController', function($scope, $rootScope, $location, $auth) 
        });
    };
    $scope.authenticate = function(provider) {
+     $scope.loggedIn = true;
      $auth.authenticate(provider)
        .then(function(response) {
          console.log('You have successfully signed in with ' + provider + '!');
@@ -43,8 +46,7 @@ app.controller('mainController', function($scope, $rootScope, $location, $auth) 
      console.log($rootScope.color.about);
      console.log("****WORKING***");
    }
-$scope.loggedIn = true;
-$scope.logIn = true;
+
 
 
 
