@@ -1,5 +1,5 @@
 
-app.controller("postController", function($scope, $http, $auth, posts, $location){
+app.controller("postController", function($scope, $http, $auth, posts, $location, $route){
   posts.getPosts().then(function(response){
     $scope.posts = response;
   })

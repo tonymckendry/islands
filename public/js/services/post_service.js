@@ -45,3 +45,9 @@ this.allUser = function (){
 
 
 })
+
+app.service('navs', function(){
+  this.login = function(){
+    return myVar = true;
+  }
+})
