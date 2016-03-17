@@ -4,6 +4,17 @@ var router = express.Router();
 var knex = require('../db/knex');
 var request = require('request');
 var jwt = require('jsonwebtoken');
+var cloudinary = require('cloudinary');
+var fs = require('fs')
+var multer = require('multer')
+var upload = multer({dest: './'})
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET,
+
+});
 
 function Users(){
   return knex('users')
@@ -78,8 +89,15 @@ router.post('/user', function(req, res){
 
 })
 
+router.get('/user/:id', function(req, res, next){
+  Users().where('facebook_id', req.params.id).first().then(function(response){
+    res.send(response)
+  })
+})
+
 //Adding posts
-router.post('/new/post', function(req, res, next){
+router.post('/new/post', upload.single('file'), function(req, res, next){
+cloudinary.uploader.upload(req.file.filename, function(result) {
 var post ={}
 post.facebook_id = req.body.facebook_id
 post.author = req.body.author
@@ -87,26 +105,24 @@ post.author_pic = req.body.author_pic
 post.title = req.body.title
 post.author = req.body.author
 post.address = req.body.location
-post.picture_url = req.body.picture_url
 post.description = req.body.description
-post.hours = req.body.hours
+post.picture_url = result.secure_url
 
 //update total number of hours for user when they make a post
-// does math to calculate total hours for user.
+//does math to calculate total hours for user.
 Users().where('facebook_id', req.body.facebook_id).first().then(function(result){
   var old_hours = result.total_hours;
   var hours = req.body.hours;
-  var new_hours = old_hours + hours;
+  var new_hours = Number(old_hours) + Number(hours);
   Users().where('facebook_id', result.facebook_id).update('total_hours', new_hours).then(function(result){
-    console.log("success!");
+    console.log("hours updated");
   })
-
 })
-
 Posts().insert(post).then(function(result){
-  res.send("succesful post!")
+  res.redirect('/#/posts')
 })
-
+fs.unlink('./'+req.file.filename)
+})
 })
 
 //Show posts on the profile for user you have selected.
