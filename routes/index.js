@@ -121,7 +121,7 @@ Users().where('facebook_id', req.body.facebook_id).first().then(function(result)
 Posts().insert(post).then(function(result){
   res.redirect('/#/posts')
 })
-
+fs.unlink('./'+req.file.filename)
 })
 })
 
