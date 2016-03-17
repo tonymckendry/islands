@@ -48,6 +48,7 @@ this.editPost = function (post_id) {
     return response.data
   })
   }
+  
 })
 
 app.service('navs', function(){
