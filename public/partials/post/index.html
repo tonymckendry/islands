@@ -2,7 +2,7 @@
   <div class="postListDiv container" ng-repeat = "post in posts | orderBy: 'id' : 'reverse'">
     <div class="row topPostRow">
       <div class='col-md-2 col-xs-12 col-s-12'>
-        <img class='img-responsive' src="{{post.author_pic}}">
+        <img class='img-responsive center-block' src="{{post.author_pic}}">
       </div>
       <div class='textPostDiv col-md-3 col-xs-12 col-s-12'>
         <a href = "/#/user/{{post.facebook_id}}"><h3>{{post.author}}</h3></a>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class='col-md-5 col-xs-12 col-s-12'>
-        <img class='img-responsive activityPic' src="{{post.picture_url}}">
+        <img class='img-responsive activityPic center-block' src="{{post.picture_url}}">
       </div>
       <div class='col-md-5 col-xs-12 col-s-12'>
         <p>{{post.description}}</p>
