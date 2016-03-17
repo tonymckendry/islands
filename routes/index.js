@@ -138,10 +138,15 @@ router.get('/dsflksldkjf23423lkdjfvVVslkdjflslss', function(req, res){
   })
 })
 
+router.get('/post/:id', function(req,res, next){
+  Posts().where('id', req.params.id).first().then(function(response){
+    res.send(response);
+    })
+})
 
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+// Posts().where('id', req.params.id).then(function(response){
+//   console.log('THIS IS THE POST WE WANT');
+//   console.log(response);
+// })
 
 module.exports = router;

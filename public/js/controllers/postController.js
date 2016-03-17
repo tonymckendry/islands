@@ -20,7 +20,6 @@ app.controller("postController", function($scope, $http, $auth, posts, $location
 
   posts.allUser().then(function(result){
     $scope.userStats = result;
-    console.log($scope.userStats);
 
   })
 })

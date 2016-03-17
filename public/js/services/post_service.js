@@ -43,7 +43,11 @@ this.allUser = function (){
   })
 }
 
-
+this.editPost = function (post_id) {
+  return $http.get('post/'+ post_id).then(function (response) {
+    return response.data
+  })
+  }
 })
 
 app.service('navs', function(){
