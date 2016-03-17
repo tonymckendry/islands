@@ -26,6 +26,7 @@ app.controller("newController", function($scope, $http, posts){
 
   $scope.submitPost = function(){
     posts.getUserData().then(function(result){
+      console.log($scope.file);
       var post = {};
       post.facebook_id = result.facebook_id;
       post.author = result.name;
@@ -34,11 +35,9 @@ app.controller("newController", function($scope, $http, posts){
       post.location = $scope.location;
       post.child_name = $scope.child_name;
       post.description = $scope.description;
-      post.picture_url = "null"
+      post.picture_url = $scope.picture_url;
       post.hours = $scope.hours
-      console.log(post);
       $http.post('new/post', post).then(function(response){
-        console.log(response);
         window.location.href = '/#/posts';
       })
     })

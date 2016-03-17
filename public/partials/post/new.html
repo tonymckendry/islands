@@ -46,7 +46,7 @@
         <div class='row'>
           <div class='textPostDiv col-md-12 col-xs-12 col-s-12'>
             <h3>Photo Upload</h3>
-            <input type = "file" value = "Browse...">
+            <input type="file" ng-upload="uploaded_file = $picture_url">
             <div class='row'>
               <div class='textPostDiv form-group col-md-12 col-xs-12 col-s-12 submitButtonDiv'>
                 <button type="submit" class='btn btn-primary btn-lg' ng-click="submitPost()">Add Post</button>

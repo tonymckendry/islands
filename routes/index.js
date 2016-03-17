@@ -4,6 +4,15 @@ var router = express.Router();
 var knex = require('../db/knex');
 var request = require('request');
 var jwt = require('jsonwebtoken');
+var cloudinary = require('cloudinary');
+var fs = require('fs')
+
+cloudinary.config({
+  cloud_name: 'sample',
+  api_key: '196933469867677',
+  api_secret: '3oaPQ2QV5J58vC80es5ymoXK50c'
+
+});
 
 function Users(){
   return knex('users')
@@ -78,6 +87,12 @@ router.post('/user', function(req, res){
 
 })
 
+router.get('/user/:id', function(req, res, next){
+  Users().where('facebook_id', req.params.id).first().then(function(response){
+    res.send(response)
+  })
+})
+
 //Adding posts
 router.post('/new/post', function(req, res, next){
 var post ={}
@@ -98,10 +113,16 @@ Users().where('facebook_id', req.body.facebook_id).first().then(function(result)
   var hours = req.body.hours;
   var new_hours = old_hours + hours;
   Users().where('facebook_id', result.facebook_id).update('total_hours', new_hours).then(function(result){
-    console.log("success!");
+
   })
 
 })
+console.log(req.body);
+// var imageStream = fs.createReadStream("Users/cspan00/Desktop/cat.png", { encoding: 'binary' })
+cloudinary.uploader.upload("cat.png", function(result) {
+  console.log(result)
+});
+
 
 Posts().insert(post).then(function(result){
   res.send("succesful post!")
