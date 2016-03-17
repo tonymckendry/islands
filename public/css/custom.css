@@ -353,3 +353,7 @@ thead{
 th{
   padding: 10px;
 }
+
+.postTitle{
+  font-size: 10em;
+}
