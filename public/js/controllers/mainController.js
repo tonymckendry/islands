@@ -61,8 +61,9 @@ app.controller('mainController', function($scope, $rootScope, $location, $auth) 
         $scope.user.session = true;
       }
       else{
-       $scope.user.session = false;
-     }
+        $scope.user.session = false;
+      }
+
   })
 
   console.log("Logged in: " + $scope.loggedIn);
