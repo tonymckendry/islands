@@ -24,8 +24,8 @@
       </div>
       <div class='col-md-5 col-xs-12 col-s-12'>
         <p>{{post.description}}</p>
-        <button class='btn btn-primary btn-sm'><a href="/posts/{{post.id}}/edit">Edit Post</a></button>
-        <button type="submit" class='btn btn-danger btn-sm'>Delete Post</button>
+        <button class='btn btn-primary btn-sm' ng-show="post.facebook_id == user"><a href="/posts/{{post.id}}/edit">Edit Post</a></button>
+        <button type="submit" class='btn btn-danger btn-sm' ng-show="post.facebook_id == user">Delete Post</button>
       </div>
     </div>
     <div class='row 2'>
