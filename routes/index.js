@@ -60,6 +60,7 @@ router.post('/auth/facebook', function(req,res){
           user.last_name = profile.last_name
           user.name = profile.name;
           user.total_hours = 0;
+          user.time = moment().calendar()
           var token = createToken(user)
           Users().insert(user)
             .catch(function(error){

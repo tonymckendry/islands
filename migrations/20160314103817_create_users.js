@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
    t.string('bio');
    t.integer('total_hours');
    t.boolean('is_admin');
+   t.string('time');
  })
 };
 
