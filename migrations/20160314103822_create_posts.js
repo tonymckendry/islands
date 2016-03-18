@@ -16,6 +16,7 @@ exports.up = function(knex, Promise) {
    t.float('hours');
    t.string('time');
    t.timestamp('created_at').defaultTo(knex.fn.now());
+
  })
 };
 

@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
    t.string('name');
    t.timestamps();
    t.string('bio');
-   t.integer('total_hours');
+   t.float('total_hours');
    t.boolean('is_admin');
    t.string('time');
  })
