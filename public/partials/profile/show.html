@@ -1,6 +1,7 @@
 <div class='container postDiv'>
   <div class='row textPostDiv'>
-      <h3><u>Profile:</u></h3>
+      <h3>Profile:</h3>
+      <hr>
   </div>
   <div class='row'>
     <div class='textPostDiv col-md-3 col-xs-12 col-s-12'>
@@ -35,7 +36,8 @@
 </div>
 
 <div class="textPostDiv container postListDiv">
-      <h3><u>Posts:</u></h3>
+      <h3>Posts:</h3>
+      <hr>
 </div>
 
 <div class="postListDiv container" ng-repeat = "post in posts | orderBy: 'id' : 'reverse'">
@@ -45,6 +47,7 @@
     </div>
     <div class='textPostDiv col-md-10 col-xs-12 col-s-12 profilePostDate'>
       <h3>{{post.title}}</h3>
+      <hr class='left'>
       <h5>March 12th, 2016</h5>
     </div>
 
@@ -57,12 +60,13 @@
       </div>
     </div>
     <div class='col-md-5 col-xs-12 col-s-12'>
-      <div class='imageHider'>
+      <div ng-show=post.picture_url class='imageHider'>
         <img class='img-responsive activityPic center-block' src="{{post.picture_url}}">
       </div>
     </div>
     <div class='col-md-5 col-xs-12 col-s-12'>
       <h3 class='postDescription'>{{post.description}}</p>
+        <hr>
     </div>
   </div>
   <div class='row'>
