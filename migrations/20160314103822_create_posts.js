@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
    t.text('picture_url');
    t.text('public_id');
    t.text('description');
-   t.integer('hours');
+   t.float('hours');
    t.timestamps();
  })
 };
