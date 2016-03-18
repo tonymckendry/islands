@@ -8,8 +8,10 @@ app.controller("postController", function($scope, $http, $auth, posts, $location
   })
 
   posts.getUserData().then(function (user) {
+    $scope.userAdmin = user.is_admin
     $scope.user = user.facebook_id
     console.log($scope.user);
+    console.log($scope.userAdmin);
   })
 
 
