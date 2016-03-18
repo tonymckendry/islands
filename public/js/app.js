@@ -8,7 +8,7 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
 
  $authProvider.facebook({
 
-     clientId: '230855193941767',
+     clientId: '976973585702482',
      scope: ['email'],
      scopeDelimiter: ',',
      profileFields: ['name', 'id', 'picture.type(large)', 'emails']
@@ -33,7 +33,7 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
  })
  .when('/posts/:id/edit',{
    templateUrl: 'partials/post/edit.html',
-   controller: 'postController'
+   controller: 'editController'
  })
  .when('/newpost',{
    templateUrl: 'partials/post/new.html',
