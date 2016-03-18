@@ -98,6 +98,7 @@ router.get('/user/:id', function(req, res, next){
 //Adding posts
 router.post('/new/post', upload.single('file'), function(req, res, next){
 cloudinary.uploader.upload(req.file.filename, function(result) {
+console.log(result);
 var post ={}
 post.facebook_id = req.body.facebook_id
 post.author = req.body.author
@@ -107,6 +108,7 @@ post.author = req.body.author
 post.address = req.body.location
 post.description = req.body.description
 post.picture_url = result.secure_url
+post.public_id = result.public_id
 post.hours = req.body.hours
 
 //update total number of hours for user when they make a post
