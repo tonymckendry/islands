@@ -1,19 +1,16 @@
 <div class='feedContainer'>
-  <a href="admin" style='color:white' ng-show='isAdmin'>Admin</a>
   <div class="postListDiv container" ng-repeat = "post in posts | orderBy: 'id' : 'reverse'">
     <div class="row topPostRow">
       <div class='col-md-2 col-xs-12 col-s-12'>
-        <img class='img-responsive' src="{{post.author_pic}}">
+        <img class='img-responsive center-block' src="{{post.author_pic}}">
       </div>
-      <div class='textPostDiv col-md-3 col-xs-12 col-s-12'>
-        <a href = "/#/user/{{post.facebook_id}}"><h3>{{post.author}}</h3></a>
-        <p>March 12th, 2016</p>
+      <div class='textPostDiv col-md-10 col-xs-12 col-s-12 profilePostDate'>
+        <h3>{{post.title}}</h3>
+        <h5>March 12th, 2016</h5>
       </div>
-      <div class='col-md-7 col-xs-12 col-s-12 progressDiv'>
 
-      </div>
     </div>
-    <div class='row'>
+    <div class='row bottomRow'>
       <div class='pointCenter col-md-2 col-xs-12 col-s-12'>
         <div class='pointVert'>
           <h2>{{post.hours}}</h2>
@@ -21,12 +18,22 @@
         </div>
       </div>
       <div class='col-md-5 col-xs-12 col-s-12'>
-        <img class='img-responsive activityPic' src="{{post.picture_url}}">
+        <div class='imageHider'>
+          <img class='img-responsive activityPic center-block' src="{{post.picture_url}}">
+        </div>
       </div>
       <div class='col-md-5 col-xs-12 col-s-12'>
+
+        <h3 class='postDescription'>{{post.description}}</p>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-12 col-xs-12 col-s-12 editButtonDiv'>
+        <button type="submit" class='btn btn-primary' ng-show="post.facebook_id == user"><a href="/posts/{{post.id}}/edit">Edit Post</a></button>
+        <button type="submit" class='btn btn-danger' ng-show="post.facebook_id == user">Delete Post</button>
+
         <p>{{post.description}}</p>
-        <button type="submit" class='btn btn-primary btn-sm'>Edit Post</button>
-        <button type="submit" class='btn btn-danger btn-sm'>Delete Post</button>
+
       </div>
     </div>
     <div class='row 2'>

@@ -33,7 +33,7 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
  })
  .when('/posts/:id/edit',{
    templateUrl: 'partials/post/edit.html',
-   controller: 'postController'
+   controller: 'editController'
  })
  .when('/newpost',{
    templateUrl: 'partials/post/new.html',
@@ -44,8 +44,10 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
    templateUrl: 'partials/login.html',
    controller: 'mainController'
  })
-
-
+ .when('/profile/new',{
+  templateUrl: 'partials/profile/new.html',
+  controller: 'profileController'
+})
  .when('/profile',{
   templateUrl: 'partials/profile/show.html',
   controller: 'profileController'
@@ -54,10 +56,7 @@ app.config(function ($routeProvider, $authProvider, $locationProvider) {
    templateUrl: 'partials/profile/show.html',
    controller: 'profileShowController'
  })
- .when('/profile/new',{
-  templateUrl: 'partials/profile/show.html',
-  controller: 'profileController'
-})
+
 
  .when('/new',{
   templateUrl: 'partials/post/new.html',
