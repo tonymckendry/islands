@@ -109,6 +109,7 @@ post.description = req.body.description
 post.picture_url = result.secure_url
 post.hours = req.body.hours
 
+
 //update total number of hours for user when they make a post
 //does math to calculate total hours for user.
 Users().where('facebook_id', req.body.facebook_id).first().then(function(result){
@@ -139,10 +140,15 @@ router.get('/dsflksldkjf23423lkdjfvVVslkdjflslss', function(req, res){
   })
 })
 
+router.get('/post/:id', function(req,res, next){
+  Posts().where('id', req.params.id).first().then(function(response){
+    res.send(response);
+    })
+})
 
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+// Posts().where('id', req.params.id).then(function(response){
+//   console.log('THIS IS THE POST WE WANT');
+//   console.log(response);
+// })
 
 module.exports = router;
