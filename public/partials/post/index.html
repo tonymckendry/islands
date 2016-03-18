@@ -33,11 +33,8 @@
     </div>
     <div class='row'>
       <div class='col-md-12 col-xs-12 col-s-12 editButtonDiv'>
-        <button type="submit" class='btn btn-primary' ng-show="post.facebook_id == user"><a href="/posts/{{post.id}}/edit">Edit Post</a></button>
+        <button type="submit" class='btn btn-primary' ng-show="post.facebook_id == user"><a class='buttonA' href="/posts/{{post.id}}/edit">Edit Post</a></button>
         <button type="submit" class='btn btn-danger' ng-show="post.facebook_id == user">Delete Post</button>
-
-        <p>{{post.description}}</p>
-
       </div>
     </div>
     <div class='row 2'>
