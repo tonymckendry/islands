@@ -1,4 +1,5 @@
 require('dotenv').load()
+var moment = require('moment')
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
@@ -108,6 +109,7 @@ post.address = req.body.location
 post.description = req.body.description
 post.picture_url = result.secure_url
 post.hours = req.body.hours
+post.time = moment().calendar()
 
 //update total number of hours for user when they make a post
 //does math to calculate total hours for user.

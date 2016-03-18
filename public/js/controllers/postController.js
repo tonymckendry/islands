@@ -2,8 +2,8 @@
 app.controller("postController", function($scope, $http, $auth, posts, $location, $route){
   posts.getPosts().then(function(response){
     $scope.posts = response;
-    console.log("this is the response we want");
-    console.log(response);
+    $scope.time = response[0].created_at;
+    
 
   })
 
