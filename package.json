@@ -17,6 +17,7 @@
     "morgan": "~1.6.1",
     "ng-upload": "^0.1.0",
     "pg": "^4.5.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "twit": "^2.2.3"
   }
 }

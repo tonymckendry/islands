@@ -1,4 +1,4 @@
-app.controller('mainController', function($scope, $rootScope, $location, $auth) {
+app.controller('mainController', function($scope, $rootScope, $location) {
 
 
  });
