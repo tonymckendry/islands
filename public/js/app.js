@@ -16,3 +16,8 @@ app.config(function ($routeProvider, $locationProvider) {
  $locationProvider.html5Mode(true);
 
 });
+
+app.factory('socket', function(){
+  var socket = io()
+  return socket
+})
