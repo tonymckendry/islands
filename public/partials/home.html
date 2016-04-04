@@ -1,5 +1,12 @@
 <p>homepage</p>
 
+<Input type='text' ng-model='term'></Input><button ng-click='callIt(term)'>Do it!</button>
+<br>
+<button ng-click='stopIt()'>Stop it</button>
+<br>
+<button ng-click='restart()'>Restart</button>
+
+<!-- <div ng-repeat="tweet in tweets | orderBy: 'reverse'"> -->
 <div ng-repeat="tweet in tweets">
-  <p>{{tweet.text}}</p>
+  <p>{{tweet.tweet}}</p>
 </div>

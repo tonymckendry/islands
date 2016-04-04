@@ -17,4 +17,5 @@ stream.on('tweet', function(tweet){
   io.emit('newTweet', tweet)
 })
 
-Twit.stream
+stream.stop()
+// Twit.stream
