@@ -38,13 +38,22 @@ var yAxis = d3.svg.axis()
   .scale(yScale)
   .orient('left')
   .ticks(5)
-  .attr
 
 var svg = d3.select('body') //creates the canvas
   .append('svg')
-  .attr('width', w)
-  .attr('height', h)
+  // .attr('width', w)
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr('viewBox', '0 0 1200 500')
+  // .attr('height', h)
   .attr('fill', 'black')
+//   .attr('id', 'chart')
+// var svg = d3.select('div') //creates the canvas
+//   .append('div')
+//   .classed('svg-container', true)
+//   .append('svg')
+//   .attr("preserveAspectRatio", "xMinYMin meet")
+//   .attr('viewBox', '0 0 600 400')
+//   .classed('svg-content-responsive', true)
 
 svg.selectAll('circle') // creates the dots
   .data(dataset)

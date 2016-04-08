@@ -21,22 +21,31 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       score = score*10
       count = count*10
       if (rand1 > .5) {
-        score += (Math.round(rand1*10))
+        if (Math.random() > .5) {
+          // score += (Math.round(rand1*10))
+          score += rand1*10
+        }
       }
       else{
-        score -= (Math.round(rand1*10))
+        if(Math.random() > .5){
+          // score -= (Math.round(rand1*10))
+          score -= rand1*10
+        }
       }
       if (rand2 > .5) {
-        count += (Math.round(rand2*10))
+        if (Math.random() > .1) {
+          // count += (Math.round(rand2*5))
+          count += rand2*5
+        }
       }
-      else{
-        count -= (Math.round(rand2*10))
-      }
+      // else{
+      //   if(Math.random() > .5){
+      //     count -= (Math.round(rand2*10))
+      //   }
+      // }
       var newNumber1 = score
       var newNumber2 = count
-      if (count > 0) {
-        dataset.push([newNumber1, newNumber2])
-      }
+      dataset.push([newNumber1, newNumber2])
       $scope.tweets.unshift(obj)
       if ($scope.streaming == false){
         console.log('IN THE IF');
@@ -87,6 +96,36 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           console.log('color is: ' + color)
           return color
         })
+      .transition()
+        // .duration(2000)
+        // .ease(Math.sqrt)
+        // .attr("r", 100)
+        .style("fill-opacity", 1)
+
+        var r = 0
+        var b = 0
+        if (score < 0) {
+          var r = Math.round(score * -2.55)
+          var g = Math.round(255 - (score * -2.55))
+        }
+        if (score > 0) {
+          var b = Math.round(score * 2.55)
+          var g = Math.round(255 - (score * 2.55))
+        }
+        var color = 'rgb(' + r + ',' + g + ',' + b + ')'
+      svg.insert("circle", "rect")
+        .attr("cx", xScale(score))
+        .attr("cy", yScale(count))
+        .attr("r", 1e-6)
+        .style("stroke", color)
+        .style("stroke-opacity", 1)
+        .style('fill-opacity', 0)
+      .transition()
+        .duration(2000)
+        .ease(Math.sqrt)
+        .attr("r", 100)
+        .style("stroke-opacity", 1e-6)
+        .remove();
       // svg.selectAll('text') //labels the dpts
       //   .data(dataset)
       //   .enter()
@@ -102,7 +141,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       //   })
       //   .attr('font-family', 'sans-serif')
       //   .attr('font-size', '11px')
-      //   .attr('fill', 'black')
+      //   .attr('fill', 'white')
       $scope.$digest()
   })
 
@@ -128,6 +167,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
 
     })
   }
+
 
 
  });
