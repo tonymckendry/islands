@@ -14,37 +14,37 @@ var dataset = []
 // }
 
 var w = 800
-var h = 400
+var h = 500
 
 var padding = 30;
 
-// var xScale = d3.scale.linear()
-//   .domain([d3.min(dataset, function(d){return d[0]}), d3.max(dataset, function(d){return d[0]})])
-//   // .domain([-500, 500])
-//   .range([padding, w - padding])
-//
-// var yScale = d3.scale.linear()
-//   .domain([d3.min(dataset, function(d){return d[1]}), d3.max(dataset, function(d){return d[1]})])
-//   // .domain([-100, 100])
-//   .range([h - padding, padding])
+var xScale = d3.scale.linear()
+  .domain([-100, 100])
+  .range([padding, w - padding])
+
+var yScale = d3.scale.linear()
+  .domain([0, 50])
+  .range([h - padding, padding])
 
 var rScale = d3.scale.linear() // sets the scale for the dot radius
 .domain([0, d3.max(dataset, function(d){ return d[1]})]) // finds the greatest Y value
 .range([2, 7])
 
-// var xAxis = d3.svg.axis()
-//   .scale(xScale)
-//   .orient('bottom')
+var xAxis = d3.svg.axis()
+  .scale(xScale)
+  .orient('bottom')
 //
-// var yAxis = d3.svg.axis()
-//   .scale(yScale)
-//   .orient('left')
-//   .ticks(5)
+var yAxis = d3.svg.axis()
+  .scale(yScale)
+  .orient('left')
+  .ticks(5)
+  .attr
 
 var svg = d3.select('body') //creates the canvas
   .append('svg')
   .attr('width', w)
   .attr('height', h)
+  .attr('fill', 'black')
 
 svg.selectAll('circle') // creates the dots
   .data(dataset)
@@ -85,12 +85,12 @@ svg.selectAll('circle') // creates the dots
 //   .attr('font-size', '11px')
 //   .attr('fill', 'red')
 
-// svg.append('g') // create X axis
-//   .attr('class', 'axis')
-//   .attr('transform', 'translate(0,' + (h - padding) + ')')
-//   .call(xAxis)
-//
-// svg.append('g') // Create Y axis
-//   .attr('class', 'axis')
-//   .attr('transform', 'translate(' + padding + ',0)')
-//   .call(yAxis)
+svg.append('g') // create X axis
+  .attr('class', 'axis')
+  .attr('transform', 'translate(0,' + (h - padding) + ')')
+  .call(xAxis)
+
+svg.append('g') // Create Y axis
+  .attr('class', 'axis')
+  .attr('transform', 'translate(' + padding + ',0)')
+  .call(yAxis)

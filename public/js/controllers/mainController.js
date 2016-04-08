@@ -8,6 +8,8 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       var arr = tweet.text.split(' ')
       var score = 0
       var count = 0
+      var rand1 = Math.random()
+      var rand2 = Math.random()
       for (var i = 0; i < arr.length; i++) {
         if(dictionary[arr[i]]){
           console.log("'" + arr[i] +  "' exists in dictionary")
@@ -16,8 +18,20 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           count ++
         }
       }
-      console.log('Score is: ' + score);
-      console.log('Count is: ' + count);
+      score = score*10
+      count = count*10
+      if (rand1 > .5) {
+        score += (Math.round(rand1*10))
+      }
+      else{
+        score -= (Math.round(rand1*10))
+      }
+      if (rand2 > .5) {
+        count += (Math.round(rand2*10))
+      }
+      else{
+        count -= (Math.round(rand2*10))
+      }
       var newNumber1 = score
       var newNumber2 = count
       if (count > 0) {
@@ -32,13 +46,13 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       }
       /////////
       var xScale = d3.scale.linear()
-      .domain([d3.min(dataset, function(d){return d[0]}), d3.max(dataset, function(d){return d[0]})])
-      // .domain([-500, 500])
+      // .domain([d3.min(dataset, function(d){return d[0]}), d3.max(dataset, function(d){return d[0]})])
+      .domain([-100, 100])
       .range([padding, w - padding])
 
       var yScale = d3.scale.linear()
-      .domain([d3.min(dataset, function(d){return d[1]}), d3.max(dataset, function(d){return d[1]})])
-      // .domain([-100, 100])
+      // .domain([d3.min(dataset, function(d){return d[1]}), d3.max(dataset, function(d){return d[1]})])
+      .domain([0, 50])
       .range([h - padding, padding])
 
       var rScale = d3.scale.linear() // sets the scale for the dot radius
@@ -59,28 +73,36 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           return rScale(d[1])
         })
         .attr('fill', function(d){
-          var r = Math.round(Math.random() * 255)
-          var g = 0
+          var r = 0
           var b = 0
+          if (d[0] < 0) {
+            var r = Math.round(d[0] * -2.55)
+            var g = Math.round(255 - (d[0] * -2.55))
+          }
+          if (d[0] > 0) {
+            var b = Math.round(d[0] * 2.55)
+            var g = Math.round(255 - (d[0] * 2.55))
+          }
           var color = 'rgb(' + r + ',' + g + ',' + b + ')'
+          console.log('color is: ' + color)
           return color
         })
-      svg.selectAll('text') //labels the dpts
-        .data(dataset)
-        .enter()
-        .append('text')
-        .text(function(d){
-          return d[0] + ',' + d[1]
-        })
-        .attr('x', function(d){
-          return xScale(d[0])
-        })
-        .attr('y', function(d){
-          return yScale(d[1])
-        })
-        .attr('font-family', 'sans-serif')
-        .attr('font-size', '11px')
-        .attr('fill', 'black')
+      // svg.selectAll('text') //labels the dpts
+      //   .data(dataset)
+      //   .enter()
+      //   .append('text')
+      //   .text(function(d){
+      //     return d[0] + ',' + d[1]
+      //   })
+      //   .attr('x', function(d){
+      //     return xScale(d[0])
+      //   })
+      //   .attr('y', function(d){
+      //     return yScale(d[1])
+      //   })
+      //   .attr('font-family', 'sans-serif')
+      //   .attr('font-size', '11px')
+      //   .attr('fill', 'black')
       $scope.$digest()
   })
 
