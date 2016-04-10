@@ -12,8 +12,8 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       var rand2 = Math.random()
       for (var i = 0; i < arr.length; i++) {
         if(dictionary[arr[i]]){
-          console.log("'" + arr[i] +  "' exists in dictionary")
-          console.log('sentiment: ' + dictionary[arr[i]])
+          // console.log("'" + arr[i] +  "' exists in dictionary")
+          // console.log('sentiment: ' + dictionary[arr[i]])
           score += dictionary[arr[i]]
           count ++
         }
@@ -22,27 +22,19 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       count = count*10
       if (rand1 > .5) {
         if (Math.random() > .5) {
-          // score += (Math.round(rand1*10))
           score += rand1*10
         }
       }
       else{
         if(Math.random() > .5){
-          // score -= (Math.round(rand1*10))
           score -= rand1*10
         }
       }
       if (rand2 > .5) {
         if (Math.random() > .1) {
-          // count += (Math.round(rand2*5))
           count += rand2*5
         }
       }
-      // else{
-      //   if(Math.random() > .5){
-      //     count -= (Math.round(rand2*10))
-      //   }
-      // }
       var newNumber1 = score
       var newNumber2 = count
       dataset.push([newNumber1, newNumber2])
@@ -53,16 +45,16 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
 
         })
       }
-      /////////
-      // var xScale = d3.scale.linear()
-      // // .domain([d3.min(dataset, function(d){return d[0]}), d3.max(dataset, function(d){return d[0]})])
-      // .domain([-100, 100])
-      // .range([padding, w - padding])
-      //
-      // var yScale = d3.scale.linear()
-      // // .domain([d3.min(dataset, function(d){return d[1]}), d3.max(dataset, function(d){return d[1]})])
-      // .domain([0, 50])
-      // .range([h - padding, padding])
+      ///////
+      var xScale = d3.scale.linear()
+      // .domain([d3.min(dataset, function(d){return d[0]}), d3.max(dataset, function(d){return d[0]})])
+      .domain([-100, 100])
+      .range([padding, w - padding])
+
+      var yScale = d3.scale.linear()
+      // .domain([d3.min(dataset, function(d){return d[1]}), d3.max(dataset, function(d){return d[1]})])
+      .domain([0, 50])
+      .range([h - padding, padding])
 
       var rScale = d3.scale.linear() // sets the scale for the dot radius
       .domain([0, d3.max(dataset, function(d){ return d[1]})]) // finds the greatest Y value
@@ -79,11 +71,12 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           return yScale(d[1])
         })
         .attr('r', function(d){ //dot radius, scaled
-          return rScale(d[1]*2)
+          return rScale(d[1])
         })
         .attr('fill', function(d){
           var r = 0
           var b = 0
+          var g = 255
           if (d[0] < 0) {
             var r = Math.round(d[0] * -2.55)
             var g = Math.round(255 - (d[0] * -2.55))
@@ -107,6 +100,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
 
         var r = 0
         var b = 0
+        var g = 255
         if (score < 0) {
           var r = Math.round(score * -2.55)
           var g = Math.round(255 - (score * -2.55))
@@ -115,7 +109,12 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           var b = Math.round(score * 2.55)
           var g = Math.round(255 - (score * 2.55))
         }
+        if (g == undefined){
+          g == 255;
+        }
         var color = 'rgb(' + r + ',' + g + ',' + b + ')'
+        console.log(obj.tweet);
+        console.log('obj color is: ' + color);
         obj.color = color
       svg.insert("circle", "rect")
         .attr("cx", xScale(score))

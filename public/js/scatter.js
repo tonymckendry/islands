@@ -13,8 +13,8 @@ var dataset = []
 //   dataset.push([newNumber1, newNumber2])
 // }
 
-var w = 1500
-var h = 870
+var w = 800
+var h = 500
 
 var padding = 30;
 
@@ -43,7 +43,7 @@ var svg = d3.select('body') //creates the canvas
   .append('svg')
   // .attr('width', w)
   .attr("preserveAspectRatio", "xMinYMin meet")
-  .attr('viewBox', '0 0 2000 500')
+  .attr('viewBox', '0 0 1200 500')
   // .attr('height', h)
   .attr('fill', 'black')
 //   .attr('id', 'chart')
