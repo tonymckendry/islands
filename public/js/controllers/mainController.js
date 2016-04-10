@@ -46,7 +46,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       var newNumber1 = score
       var newNumber2 = count
       dataset.push([newNumber1, newNumber2])
-      $scope.tweets.unshift(obj)
+
       if ($scope.streaming == false){
         console.log('IN THE IF');
         $http.get('/stop').success(function(date){
@@ -54,15 +54,15 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
         })
       }
       /////////
-      var xScale = d3.scale.linear()
-      // .domain([d3.min(dataset, function(d){return d[0]}), d3.max(dataset, function(d){return d[0]})])
-      .domain([-100, 100])
-      .range([padding, w - padding])
-
-      var yScale = d3.scale.linear()
-      // .domain([d3.min(dataset, function(d){return d[1]}), d3.max(dataset, function(d){return d[1]})])
-      .domain([0, 50])
-      .range([h - padding, padding])
+      // var xScale = d3.scale.linear()
+      // // .domain([d3.min(dataset, function(d){return d[0]}), d3.max(dataset, function(d){return d[0]})])
+      // .domain([-100, 100])
+      // .range([padding, w - padding])
+      //
+      // var yScale = d3.scale.linear()
+      // // .domain([d3.min(dataset, function(d){return d[1]}), d3.max(dataset, function(d){return d[1]})])
+      // .domain([0, 50])
+      // .range([h - padding, padding])
 
       var rScale = d3.scale.linear() // sets the scale for the dot radius
       .domain([0, d3.max(dataset, function(d){ return d[1]})]) // finds the greatest Y value
@@ -79,7 +79,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           return yScale(d[1])
         })
         .attr('r', function(d){ //dot radius, scaled
-          return rScale(d[1])
+          return rScale(d[1]*2)
         })
         .attr('fill', function(d){
           var r = 0
@@ -91,6 +91,9 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           if (d[0] > 0) {
             var b = Math.round(d[0] * 2.55)
             var g = Math.round(255 - (d[0] * 2.55))
+          }
+          if (g == undefined) {
+            g = 255
           }
           var color = 'rgb(' + r + ',' + g + ',' + b + ')'
           console.log('color is: ' + color)
@@ -113,6 +116,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           var g = Math.round(255 - (score * 2.55))
         }
         var color = 'rgb(' + r + ',' + g + ',' + b + ')'
+        obj.color = color
       svg.insert("circle", "rect")
         .attr("cx", xScale(score))
         .attr("cy", yScale(count))
@@ -142,6 +146,13 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       //   .attr('font-family', 'sans-serif')
       //   .attr('font-size', '11px')
       //   .attr('fill', 'white')
+      var total = 0
+      for (var i = 0; i < dataset.length; i++) {
+        total += dataset[i][0]
+      }
+      total = total / (dataset.length + 1)
+      $scope.total = total
+      $scope.tweets.unshift(obj)
       $scope.$digest()
   })
 

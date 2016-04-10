@@ -1,5 +1,10 @@
 body{
   background-color: black;
+  font-family: sans-serif;
+}
+
+::-webkit-scrollbar{
+    display: none;
 }
 
 .axis path,
@@ -37,4 +42,34 @@ body{
 #theChart{
   width: 500px;
   height: 500px;
+}
+
+h2{
+  color: white;
+}
+
+.tweetFeed{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 24vw;
+  outline: 1px solid white;
+  padding: 15px;
+  padding-bottom: 0;
+  padding-top: 0;
+  overflow: scroll;
+  font-size: .9em;
+}
+
+.inputDiv{
+  display: inline-block;
+}
+
+.totalDiv{
+  display: inline-block;
+}
+
+.tweetText{
+  color: white;
 }

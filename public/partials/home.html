@@ -1,10 +1,17 @@
 <p>homepage</p>
-
-<Input type='text' ng-model='term'></Input><button ng-click='callIt(term)'>Do it!</button>
-<br>
-<button ng-click='stopIt()'>Stop it</button>
-<br>
-<button ng-click='restart()'>Restart</button>
+<div class='inputDiv'>
+  <Input type='text' ng-model='term'></Input><button ng-click='callIt(term)'>Do it!</button>
+  <br>
+  <button ng-click='stopIt()'>Stop it</button>
+  <br>
+  <button ng-click='restart()'>Restart</button>
+</div>
+<div class='totalDiv'>
+  <h2>{{total}}</h2>
+</div>
+<div class='tweetFeed'>
+  <p class='tweetText' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}">{{tweet.tweet}}</p>
+</div>
 
 <!-- <div ng-repeat="tweet in tweets | orderBy: 'reverse'"> -->
 <!-- <div ng-repeat="tweet in tweets">
