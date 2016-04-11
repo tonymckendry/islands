@@ -1,4 +1,3 @@
-<p>homepage</p>
 <div class='inputDiv'>
   <Input type='text' ng-model='term'></Input><button ng-click='callIt(term)'>Do it!</button>
   <br>
@@ -9,8 +8,10 @@
 <div class='totalDiv'>
   <h2>{{total}}</h2>
 </div>
+<div class='a'></div>
 <div class='tweetFeed'>
-  <p class='tweetText' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}">{{tweet.tweet}}</p>
+  <div class='feedTitle'>Tweet Feed</div>
+  <p class='tweetText fadein' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}">{{tweet.tweet}}</p>
 </div>
 
 <!-- <div ng-repeat="tweet in tweets | orderBy: 'reverse'"> -->

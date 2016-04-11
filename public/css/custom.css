@@ -1,6 +1,7 @@
 body{
   background-color: black;
   font-family: sans-serif;
+  color: white;
 }
 
 ::-webkit-scrollbar{
@@ -35,18 +36,10 @@ body{
 .svg-content-responsive {
     display: inline-block;
     position: absolute;
-    top: 10px;
+    top: 0;
     left: 0;
 }
 
-#theChart{
-  width: 500px;
-  height: 500px;
-}
-
-h2{
-  color: white;
-}
 
 .tweetFeed{
   position: absolute;
@@ -64,12 +57,26 @@ h2{
 
 .inputDiv{
   display: inline-block;
+  vertical-align: middle;
 }
 
 .totalDiv{
   display: inline-block;
+  vertical-align: middle;
 }
 
 .tweetText{
   color: white;
+}
+
+.feedTitle{
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+  text-decoration: underline;
+
+}
+
+.a{
+  /*height: 100vw;*/
 }

@@ -2,7 +2,6 @@
 //                 [5, 20], [480, 90], [250, 50], [100, 33], [330, 95],
 //                 [410, 12], [475, 44], [25, 67], [85, 21], [220, 88], [600, 150]
 //               ];
-
 var dataset = []
 // var numDataPoints = 5000
 // var xRange = Math.random() * 1000
@@ -39,13 +38,13 @@ var yAxis = d3.svg.axis()
   .orient('left')
   .ticks(5)
 
-var svg = d3.select('body') //creates the canvas
+var svg = d3.select('div.a') //creates the canvas
   .append('svg')
   // .attr('width', w)
   .attr("preserveAspectRatio", "xMinYMin meet")
   .attr('viewBox', '0 0 1200 500')
   // .attr('height', h)
-  .attr('fill', 'black')
+  // .attr('fill', 'black')
 //   .attr('id', 'chart')
 // var svg = d3.select('div') //creates the canvas
 //   .append('div')
@@ -93,13 +92,3 @@ svg.selectAll('circle') // creates the dots
 //   .attr('font-family', 'sans-serif')
 //   .attr('font-size', '11px')
 //   .attr('fill', 'red')
-
-svg.append('g') // create X axis
-  .attr('class', 'axis')
-  .attr('transform', 'translate(0,' + (h - padding) + ')')
-  .call(xAxis)
-
-svg.append('g') // Create Y axis
-  .attr('class', 'axis')
-  .attr('transform', 'translate(' + padding + ',0)')
-  .call(yAxis)

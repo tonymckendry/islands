@@ -2,6 +2,23 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
   $scope.tweets = []
   $scope.streaming = true;
   // $scope.tweets = thing;
+
+  var svg = d3.select('div.a') //creates the canvas
+    .append('svg')
+    // .attr('width', w)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr('viewBox', '0 0 1200 500')
+
+  svg.append('g') // create X axis
+    .attr('class', 'axis')
+    .attr('transform', 'translate(0,' + (h - padding) + ')')
+    .call(xAxis)
+
+  svg.append('g') // Create Y axis
+    .attr('class', 'axis')
+    .attr('transform', 'translate(' + padding + ',0)')
+    .call(yAxis)
+
   socket.on('newTweet', function(tweet){
       var obj = {}
       obj.tweet = tweet.text
@@ -92,11 +109,11 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           console.log('color is: ' + color)
           return color
         })
-      .transition()
-        // .duration(2000)
-        // .ease(Math.sqrt)
-        // .attr("r", 100)
-        .style("fill-opacity", 1)
+      // .transition()
+      //   // .duration(2000)
+      //   // .ease(Math.sqrt)
+      //   // .attr("r", 100)
+      //   .style("fill-opacity", 1)
 
         var r = 0
         var b = 0
@@ -149,7 +166,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       for (var i = 0; i < dataset.length; i++) {
         total += dataset[i][0]
       }
-      total = total / (dataset.length + 1)
+      total = (total / (dataset.length + 1)).toFixed(2)
       $scope.total = total
       $scope.tweets.unshift(obj)
       $scope.$digest()
@@ -169,6 +186,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       console.log('DATA!');
       console.log(data)
     })
+    console.log(dataset);
   }
 
   $scope.restart=function(){ //restarts the tweet stream when you press the button
