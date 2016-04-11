@@ -2,6 +2,7 @@ body{
   background-color: black;
   font-family: sans-serif;
   color: white;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar{
@@ -77,6 +78,7 @@ body{
 
 }
 
-.a{
-  /*height: 100vw;*/
+.a svg{
+  position: absolute;
+  bottom: 0;
 }
