@@ -5,19 +5,19 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
 
   var svg = d3.select('div.a') //creates the canvas
     .append('svg')
-    // .attr('width', w)
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr('viewBox', '0 0 1200 500')
+    .attr('width', w)
+    // .attr("preserveAspectRatio", "xMinYMin meet")
+    // .attr('viewBox', '0 0 1200 500')
 
-  svg.append('g') // create X axis
-    .attr('class', 'axis')
-    .attr('transform', 'translate(0,' + (h - padding) + ')')
-    .call(xAxis)
-
-  svg.append('g') // Create Y axis
-    .attr('class', 'axis')
-    .attr('transform', 'translate(' + padding + ',0)')
-    .call(yAxis)
+  // svg.append('g') // create X axis
+  //   .attr('class', 'axis')
+  //   .attr('transform', 'translate(0,' + (h - padding) + ')')
+  //   .call(xAxis)
+  //
+  // svg.append('g') // Create Y axis
+  //   .attr('class', 'axis')
+  //   .attr('transform', 'translate(' + padding + ',0)')
+  //   .call(yAxis)
 
   socket.on('newTweet', function(tweet){
       var obj = {}
@@ -173,6 +173,24 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       }
       average = (average / count).toFixed(2)
       $scope.average = average
+      $scope.negWidth = parseInt(average*-1);
+      $scope.posWidth = parseInt(average);
+      var avr = 0
+      var avb = 0
+      var avg = 255
+      if (average < 0) {
+        avr = Math.round(average * -2.55)
+        avg = Math.round(255 - (average * -2.55))
+      }
+      if (average > 0) {
+        avb = Math.round(average * 2.55)
+        avg = Math.round(255 - (average * 2.55))
+      }
+      if (avg == undefined){
+        avg == 255;
+      }
+      var avcolor = 'rgb(' + avr + ',' + avg + ',' + avb + ')'
+      $scope.avcolor = avcolor
       $scope.total = dataset.length
       $scope.tweets.unshift(obj)
       $scope.$digest()

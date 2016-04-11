@@ -31,10 +31,8 @@ var T = new Twit({
 //
 // })
 router.get('/stop', function(req, res, next){
-  function stopit(){
-    stream.stop()
-  }
-  stopit()
+  console.log("**********STOPPPED*****");
+  stream.stop()
   console.log('STOPPED!');
   res.send('success')
 })
@@ -61,6 +59,10 @@ function tweeter(){
     // console.log(tweet.text)
     // console.log("____________")
     io.emit('newTweet', tweet)
+  })
+
+  stream.on('error', function(obj){
+    console.log(obj)
   })
 
   res.send('streaming')

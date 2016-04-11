@@ -2,11 +2,15 @@ body{
   background-color: black;
   font-family: sans-serif;
   /*color: white;*/
-  overflow-x: hidden;
+  /*overflow-y: hidden;*/
 }
 
 ::-webkit-scrollbar{
     display: none;
+}
+
+p{
+  color: white;
 }
 
 .axis path,
@@ -85,6 +89,8 @@ body{
 .a svg{
   position: absolute;
   bottom: 0;
+  height: 90%;
+  width: 100%;
 }
 
 .leftContainer{
@@ -94,4 +100,31 @@ body{
 .container{
   margin: 0;
   width: 100vw;
+}
+
+.progress{
+  width: 43.5%;
+  margin: 0 auto;
+  display: inline-block;
+  border-radius: 0;
+  background-color: black;
+  /*outline: 1px solid white;*/
+}
+
+
+.negbar{
+  float: right;
+  background-color: red;
+}
+
+.progcont{
+  width: 100%;
+  text-align: center;
+  margin-left: -40px;
+  position: absolute;
+  bottom: 0;
+}
+
+.neg{
+  margin-right: -5px;
 }

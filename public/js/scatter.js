@@ -12,8 +12,8 @@ var dataset = []
 //   dataset.push([newNumber1, newNumber2])
 // }
 
-var w = 800
-var h = 500
+var w = 1000
+var h = 650
 
 var padding = 30;
 
@@ -38,11 +38,11 @@ var yAxis = d3.svg.axis()
   .orient('left')
   .ticks(5)
 
-var svg = d3.select('div.a') //creates the canvas
-  .append('svg')
+// var svg = d3.select('div.a') //creates the canvas
+  // .append('svg')
   // .attr('width', w)
-  .attr("preserveAspectRatio", "xMinYMin meet")
-  .attr('viewBox', '0 0 1200 500')
+  // .attr("preserveAspectRatio", "xMinYMin meet")
+  // .attr('viewBox', '0 0 1200 500')
   // .attr('height', h)
   // .attr('fill', 'black')
 //   .attr('id', 'chart')
