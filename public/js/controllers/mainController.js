@@ -37,21 +37,22 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       }
       score = score*10
       count = count*10
-      if (rand1 > .5) {
-        if (Math.random() > .5) {
-          score += rand1*10
-        }
-      }
-      else{
-        if(Math.random() > .5){
-          score -= rand1*10
-        }
-      }
-      if (rand2 > .5) {
-        if (Math.random() > .1) {
-          count += rand2*5
-        }
-      }
+      // if (rand1 > .5) {
+      //   if (Math.random() > .5) {
+      //     score += rand1*10
+      //   }
+      // }
+      // else{
+      //   if(Math.random() > .5){
+      //     score -= rand1*10
+      //   }
+      // }
+      // if (rand2 > .5) {
+      //   if (Math.random() > .1) {
+      //     count += rand2*5
+      //   }
+      // }
+      obj.coords = score.toFixed(2) + ", " + count.toFixed(2)
       var newNumber1 = score
       var newNumber2 = count
       dataset.push([newNumber1, newNumber2])
@@ -163,10 +164,14 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       //   .attr('font-size', '11px')
       //   .attr('fill', 'white')
       var total = 0
+      var count = 0
       for (var i = 0; i < dataset.length; i++) {
-        total += dataset[i][0]
+        if (dataset[i][0] !== 0) {
+          total += dataset[i][0]
+          count ++
+        }
       }
-      total = (total / (dataset.length + 1)).toFixed(2)
+      total = (total / count).toFixed(2)
       $scope.total = total
       $scope.tweets.unshift(obj)
       $scope.$digest()
@@ -176,6 +181,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
     console.log('CALLED IT');
     $http.get('/' + term).success(function(data){
     })
+    console.log('streaming success');
     $scope.streaming = true;
   }
 
