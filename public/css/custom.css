@@ -65,6 +65,10 @@ body{
   display: inline-block;
   vertical-align: middle;
 }
+.averageDiv{
+  display: inline-block;
+  vertical-align: middle;
+}
 
 .tweetText{
   color: white;

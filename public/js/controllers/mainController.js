@@ -163,16 +163,17 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       //   .attr('font-family', 'sans-serif')
       //   .attr('font-size', '11px')
       //   .attr('fill', 'white')
-      var total = 0
+      var average = 0
       var count = 0
       for (var i = 0; i < dataset.length; i++) {
         if (dataset[i][0] !== 0) {
-          total += dataset[i][0]
+          average += dataset[i][0]
           count ++
         }
       }
-      total = (total / count).toFixed(2)
-      $scope.total = total
+      average = (average / count).toFixed(2)
+      $scope.average = average
+      $scope.total = dataset.length
       $scope.tweets.unshift(obj)
       $scope.$digest()
   })
