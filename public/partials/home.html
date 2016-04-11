@@ -1,18 +1,30 @@
-<div class='inputDiv'>
-  <Input type='text' ng-model='term'></Input><button ng-click='callIt(term)'>Do it!</button>
-  <br>
-  <button ng-click='stopIt()'>Stop it</button>
-  <br>
-  <button ng-click='restart()'>Restart</button>
-</div>
-<div class='totalDiv'>
-  <p>Tweets: {{total}}</p>
-  <p>Average: {{average}}</p>
-</div>
-<div class='a'></div>
-<div class='tweetFeed'>
-  <div class='feedTitle'>Tweet Feed</div>
-  <p class='tweetText fadein' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}">{{tweet.tweet}}{{tweet.coords}}</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-9 leftContainer'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <div class='inputDiv'>
+            <Input type='text' ng-model='term'></Input><button ng-click='callIt(term)'>Do it!</button>
+            <br>
+            <button ng-click='stopIt()'>Stop it</button>
+            <br>
+            <button ng-click='restart()'>Restart</button>
+          </div>
+          <div class='totalDiv'>
+            <p>Tweets: {{total}}</p>
+            <p>Average: {{average}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class='row'> -->
+        <div class='a'></div>
+      <!-- </div> -->
+    </div>
+      <div class='tweetFeed col-md-3'>
+        <div class='feedTitle'>Tweet Feed</div>
+        <p class='tweetText fadein' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}">{{tweet.tweet}}{{tweet.coords}}</p>
+      </div>
+  </div>
 </div>
 
 <!-- <div ng-repeat="tweet in tweets | orderBy: 'reverse'"> -->

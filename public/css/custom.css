@@ -1,7 +1,7 @@
 body{
   background-color: black;
   font-family: sans-serif;
-  color: white;
+  /*color: white;*/
   overflow-x: hidden;
 }
 
@@ -43,11 +43,11 @@ body{
 
 
 .tweetFeed{
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  right: 0;
+  right: 0;*/
   height: 100vh;
-  width: 24vw;
+  /*width: 24vw;*/
   outline: 1px solid white;
   padding: 15px;
   padding-bottom: 0;
@@ -85,4 +85,13 @@ body{
 .a svg{
   position: absolute;
   bottom: 0;
+}
+
+.leftContainer{
+  height: 100vh;
+}
+
+.container{
+  margin: 0;
+  width: 100vw;
 }
