@@ -9,15 +9,15 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
     // .attr("preserveAspectRatio", "xMinYMin meet")
     // .attr('viewBox', '0 0 1200 500')
 
-  // svg.append('g') // create X axis
-  //   .attr('class', 'axis')
-  //   .attr('transform', 'translate(0,' + (h - padding) + ')')
-  //   .call(xAxis)
-  //
-  // svg.append('g') // Create Y axis
-  //   .attr('class', 'axis')
-  //   .attr('transform', 'translate(' + padding + ',0)')
-  //   .call(yAxis)
+  svg.append('g') // create X axis
+    .attr('class', 'axis')
+    .attr('transform', 'translate(0,' + (h - padding) + ')')
+    .call(xAxis)
+
+  svg.append('g') // Create Y axis
+    .attr('class', 'axis')
+    .attr('transform', 'translate(' + padding + ',0)')
+    .call(yAxis)
 
   socket.on('newTweet', function(tweet){
       var obj = {}
@@ -106,6 +106,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           if (g == undefined) {
             g = 255
           }
+
           var color = 'rgb(' + r + ',' + g + ',' + b + ')'
           console.log('color is: ' + color)
           return color
