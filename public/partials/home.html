@@ -1,3 +1,4 @@
+<!--Seach input modal-->
 <div class='modal' id='myModal' tabindex="-1" role='dialog'>
   <div class='modal-dialog' role='document'>
     <div class='modal-content'>
@@ -14,6 +15,17 @@
     </div>
   </div>
 </div>
+<!--Splash Page-->
+<div class='container' ng-show='showSplash'>
+  <div class='row'>
+    <div class='col-md-12 splashPage'>
+      <h1>TweetMood</h1>
+      <hr>
+      <button data-toggle='modal' data-target='#myModal' ng-click='hideSplash()'>Get Started</button>
+    </div>
+  </div>
+</div>
+<!-- main part with graph -->
 <div class='container' ng-show='showGraph'>
   <div class='row'>
     <div class='col-md-9 leftContainer'>
@@ -26,7 +38,7 @@
           <h3>Tweets: {{total}}</h3>
         </div>
         <div class='col-md-4'>
-          <h3>Average: {{average}}</h3>
+          <h3>Average: <span ng-style="{'color':avcolor}">{{average}}</span></h3>
         </div>
         <hr>
       </div>
@@ -50,7 +62,7 @@
     </div>
       <div class='tweetFeed col-md-3'>
         <div class='feedTitle'><h3>Tweet Feed</h3></div>
-        <p class='tweetText fadein' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}">{{tweet.tweet}}{{tweet.coords}}</p>
+        <p class='tweetText fadein' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}">{{tweet.tweet}}</p>
       </div>
   </div>
 </div>

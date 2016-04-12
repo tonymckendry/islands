@@ -1,7 +1,13 @@
 app.controller('mainController', function($scope, $rootScope, $location, socket, $http) {
   $scope.tweets = []
   $scope.streaming = true;
+  $scope.showSplash = true;
+  $scope.total = 0;
   // $scope.tweets = thing;
+
+  $scope.hideSplash = function(){
+    $scope.showSplash = false;
+  }
 
   var svg = d3.select('div.a') //creates the canvas
     .append('svg')
@@ -34,7 +40,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           count ++
         }
       }
-      if (rando > .5) {
+      if (rando > .1) {
         if (rand1 > .5) {
           score += rand1
         }
@@ -44,11 +50,16 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
         if (rand2 > .5) {
           count += rand2
         }
+        else{
+          count -= rand2
+          if (count < 0) {
+            count = 0
+          }
+        }
       }
       score = score*10
       count = count*10
 
-      obj.coords = score.toFixed(2) + ", " + count.toFixed(2)
       var newNumber1 = score
       var newNumber2 = count
       dataset.push([newNumber1, newNumber2])
@@ -217,8 +228,8 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
 
     })
   }
-     $(document).ready(function () {
-       $('#myModal').modal('show');
-     });
+    //  $(document).ready(function () {
+    //    $('#myModal').modal('show');
+    //  });
 
  });

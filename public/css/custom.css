@@ -15,7 +15,7 @@ body{
     display: none;
 }
 
-p, h3{
+p, h3, h1{
   color: white;
 }
 
@@ -165,4 +165,18 @@ hr{
 
 .modal-content{
   background-image: url('../img/modalback.jpg');
+}
+
+.splashPage{
+  text-align: center;
+}
+
+.splashPage h1{
+  font-size: 8em;
+  margin-top: 10%;
+}
+
+.splashPage hr{
+  width: 50%;
+  margin-top: 20px;
 }
