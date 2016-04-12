@@ -6,18 +6,16 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
   var svg = d3.select('div.a') //creates the canvas
     .append('svg')
     .attr('width', w)
-    // .attr("preserveAspectRatio", "xMinYMin meet")
-    // .attr('viewBox', '0 0 1200 500')
 
-  svg.append('g') // create X axis
-    .attr('class', 'axis')
-    .attr('transform', 'translate(0,' + (h - padding) + ')')
-    .call(xAxis)
-
-  svg.append('g') // Create Y axis
-    .attr('class', 'axis')
-    .attr('transform', 'translate(' + padding + ',0)')
-    .call(yAxis)
+  // svg.append('g') // create X axis
+  //   .attr('class', 'axis')
+  //   .attr('transform', 'translate(0,' + (h - padding) + ')')
+  //   .call(xAxis)
+  //
+  // svg.append('g') // Create Y axis
+  //   .attr('class', 'axis')
+  //   .attr('transform', 'translate(' + padding + ',0)')
+  //   .call(yAxis)
 
   socket.on('newTweet', function(tweet){
       var obj = {}
@@ -49,7 +47,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       }
       score = score*10
       count = count*10
-      
+
       obj.coords = score.toFixed(2) + ", " + count.toFixed(2)
       var newNumber1 = score
       var newNumber2 = count
@@ -63,12 +61,10 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       }
       ///////
       var xScale = d3.scale.linear()
-      // .domain([d3.min(dataset, function(d){return d[0]}), d3.max(dataset, function(d){return d[0]})])
       .domain([-100, 100])
       .range([padding, w - padding])
 
       var yScale = d3.scale.linear()
-      // .domain([d3.min(dataset, function(d){return d[1]}), d3.max(dataset, function(d){return d[1]})])
       .domain([0, 50])
       .range([h - padding, padding])
 
@@ -202,6 +198,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
     })
     console.log('streaming success');
     $scope.streaming = true;
+    $scope.showGraph = true;
   }
 
   $scope.stopIt = function(){ //stops the tweet stream when you press the button
@@ -220,7 +217,8 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
 
     })
   }
-
-
+     $(document).ready(function () {
+       $('#myModal').modal('show');
+     });
 
  });

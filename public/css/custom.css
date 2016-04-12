@@ -1,6 +1,12 @@
+@font-face {
+  font-family: open;
+  src: url('../fonts/OpenSans-Regular.ttf');
+}
+
 body{
   background-color: black;
-  font-family: sans-serif;
+  background-image: url('../img/back.jpg');
+  font-family: open;
   /*color: white;*/
   /*overflow-y: hidden;*/
 }
@@ -9,7 +15,7 @@ body{
     display: none;
 }
 
-p{
+p, h3{
   color: white;
 }
 
@@ -52,7 +58,8 @@ p{
   right: 0;*/
   height: 100vh;
   /*width: 24vw;*/
-  outline: 1px solid white;
+  outline: 1px solid rgba(255,255,255,.3);
+  box-shadow: -1px 0 5px rgba(255,255,255,.5);
   padding: 15px;
   padding-bottom: 0;
   padding-top: 0;
@@ -107,7 +114,7 @@ p{
   margin: 0 auto;
   display: inline-block;
   border-radius: 0;
-  background-color: black;
+  background: none;
   /*outline: 1px solid white;*/
 }
 
@@ -127,4 +134,35 @@ p{
 
 .neg{
   margin-right: -5px;
+}
+
+button{
+  margin-top: 20px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+hr{
+  margin-top: 70px;
+  border: 1px solid rgba(255,255,255,.3);
+  box-shadow: 1px 0 5px rgba(255,255,255,.5);
+}
+
+.modal{
+  text-align: center;
+  margin-top: 10%;
+}
+
+.modal button{
+  box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+}
+
+.modal input{
+  font-size: 2em;
+  text-align: center;
+}
+
+.modal-content{
+  background-image: url('../img/modalback.jpg');
 }
