@@ -27,6 +27,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       var count = 0
       var rand1 = Math.random()
       var rand2 = Math.random()
+      var rando = Math.random()
       for (var i = 0; i < arr.length; i++) {
         if(dictionary[arr[i]]){
           // console.log("'" + arr[i] +  "' exists in dictionary")
@@ -35,23 +36,20 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           count ++
         }
       }
+      if (rando > .5) {
+        if (rand1 > .5) {
+          score += rand1
+        }
+        else{
+          score -= rand1
+        }
+        if (rand2 > .5) {
+          count += rand2
+        }
+      }
       score = score*10
       count = count*10
-      // if (rand1 > .5) {
-      //   if (Math.random() > .5) {
-      //     score += rand1*10
-      //   }
-      // }
-      // else{
-      //   if(Math.random() > .5){
-      //     score -= rand1*10
-      //   }
-      // }
-      // if (rand2 > .5) {
-      //   if (Math.random() > .1) {
-      //     count += rand2*5
-      //   }
-      // }
+      
       obj.coords = score.toFixed(2) + ", " + count.toFixed(2)
       var newNumber1 = score
       var newNumber2 = count
@@ -96,16 +94,17 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           var b = 0
           var g = 255
           if (d[0] < 0) {
-            var r = Math.round(d[0] * -2.55)
-            var g = Math.round(255 - (d[0] * -2.55))
+            r = Math.round(d[0] * -2.55)
+            g = Math.round(255 - (d[0] * -2.55))
           }
           if (d[0] > 0) {
-            var b = Math.round(d[0] * 2.55)
-            var g = Math.round(255 - (d[0] * 2.55))
+            b = Math.round(d[0] * 2.55)
+            g = Math.round(255 - (d[0] * 2.55))
           }
           if (g == undefined) {
             g = 255
           }
+
 
           var color = 'rgb(' + r + ',' + g + ',' + b + ')'
           console.log('color is: ' + color)
