@@ -62,7 +62,7 @@
     </div>
       <div class='tweetFeed col-md-3'>
         <div class='feedTitle'><h3>Tweet Feed</h3></div>
-        <p class='tweetText fadein' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}">{{tweet.tweet}}</p>
+        <p class='tweetText fadein' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}"><b>@{{tweet.user}}:</b> {{tweet.tweet}}</p>
       </div>
   </div>
 </div>

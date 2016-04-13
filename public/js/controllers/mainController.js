@@ -24,7 +24,9 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
     .call(yAxis)
 
   socket.on('newTweet', function(tweet){
+      console.log(tweet);
       var obj = {}
+      obj.user = tweet.user.name
       obj.tweet = tweet.text
       var arr = tweet.text.split(' ')
       var score = 0
@@ -41,7 +43,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           count ++
         }
       }
-      if (rando > .5) {
+      if (rando > .2) {
         if (rando2 > .5) {
           score += rand1
         }
@@ -61,8 +63,15 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       score = score*10
       count = count*10
 
+      if (score < -100) {
+        score = -100
+      }
+      if (score > 100) {
+        score = 100
+      }
+
       var newNumber1 = score
-      var newNumber2 = count
+      var newNumber2 = tweet.text.length
       dataset.push([newNumber1, newNumber2])
       ///////Scales
       var xScale = d3.scale.linear()
@@ -70,7 +79,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       .range([padding, w - padding])
 
       var yScale = d3.scale.linear()
-      .domain([0, 50])
+      .domain([0, 140])
       .range([h - padding, padding])
 
       var rScale = d3.scale.linear() // sets the scale for the dot radius
@@ -132,7 +141,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
         obj.color = color
       svg.insert("circle", "rect")
         .attr("cx", xScale(score))
-        .attr("cy", yScale(count))
+        .attr("cy", yScale(tweet.text.length))
         .attr("r", 1e-6)
         .style("stroke", color)
         .style("stroke-opacity", 1)
@@ -143,7 +152,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
         .attr("r", 100)
         .style("stroke-opacity", 1e-6)
         .remove();
-      // svg.selectAll('text') //labels the dots
+      // svg.selectAll('text') //labels the dpts
       //   .data(dataset)
       //   .enter()
       //   .append('text')
@@ -160,14 +169,14 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       //   .attr('font-size', '11px')
       //   .attr('fill', 'white')
       var average = 0
-      var count = 0
+      var counter = 0
       for (var i = 0; i < dataset.length; i++) {
         if (dataset[i][0] !== 0) {
           average += dataset[i][0]
-          count ++
+          counter ++
         }
       }
-      average = (average / count).toFixed(2)
+      average = (average / counter).toFixed(2)
       $scope.average = average
       $scope.negWidth = parseInt(average*-1);
       $scope.posWidth = parseInt(average);
