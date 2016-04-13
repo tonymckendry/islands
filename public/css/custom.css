@@ -171,6 +171,11 @@ hr{
   text-align: center;
 }
 
+.splashPage button{
+  margin-top: 45px;
+  font-size: 2em;
+}
+
 .splashPage h1{
   font-size: 8em;
   margin-top: 10%;
@@ -179,4 +184,8 @@ hr{
 .splashPage hr{
   width: 50%;
   margin-top: 20px;
+}
+
+.homebar{
+  width: 700px;
 }

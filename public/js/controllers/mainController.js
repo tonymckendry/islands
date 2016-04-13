@@ -5,6 +5,11 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
   $scope.total = 0;
   // $scope.tweets = thing;
 
+  $scope.clearData = function(){
+    dataset = []
+    $scope.digest()
+  }
+
   $scope.hideSplash = function(){
     $scope.showSplash = false;
   }
@@ -13,15 +18,15 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
     .append('svg')
     .attr('width', w)
 
-  svg.append('g') // create X axis
-    .attr('class', 'axis')
-    .attr('transform', 'translate(0,' + (h - padding) + ')')
-    .call(xAxis)
-
-  svg.append('g') // Create Y axis
-    .attr('class', 'axis')
-    .attr('transform', 'translate(' + padding + ',0)')
-    .call(yAxis)
+  // svg.append('g') // create X axis
+  //   .attr('class', 'axis')
+  //   .attr('transform', 'translate(0,' + (h - padding) + ')')
+  //   .call(xAxis)
+  //
+  // svg.append('g') // Create Y axis
+  //   .attr('class', 'axis')
+  //   .attr('transform', 'translate(' + padding + ',0)')
+  //   .call(yAxis)
 
   socket.on('newTweet', function(tweet){
       console.log(tweet);
@@ -103,21 +108,18 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           var r = 0
           var b = 0
           var g = 255
-          if (d[0] < 0) {
+          if (d[0] < 0){
             r = Math.round(d[0] * -2.55)
             g = Math.round(255 - (d[0] * -2.55))
           }
-          if (d[0] > 0) {
+          if (d[0] > 0){
             b = Math.round(d[0] * 2.55)
             g = Math.round(255 - (d[0] * 2.55))
           }
-          if (g == undefined) {
+          if (g == undefined){
             g = 255
           }
-
-
           var color = 'rgb(' + r + ',' + g + ',' + b + ')'
-          // console.log('color is: ' + color)
           return color
         })
 
@@ -219,15 +221,5 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
     })
     console.log(dataset.toString());
   }
-
-  $scope.restart=function(){ //restarts the tweet stream when you press the button
-    $scope.streaming=true;
-    $http.get('/restart').success(function(data){
-
-    })
-  }
-    //  $(document).ready(function () {
-    //    $('#myModal').modal('show');
-    //  });
 
  });
