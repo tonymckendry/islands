@@ -13,15 +13,15 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
     .append('svg')
     .attr('width', w)
 
-  // svg.append('g') // create X axis
-  //   .attr('class', 'axis')
-  //   .attr('transform', 'translate(0,' + (h - padding) + ')')
-  //   .call(xAxis)
-  //
-  // svg.append('g') // Create Y axis
-  //   .attr('class', 'axis')
-  //   .attr('transform', 'translate(' + padding + ',0)')
-  //   .call(yAxis)
+  svg.append('g') // create X axis
+    .attr('class', 'axis')
+    .attr('transform', 'translate(0,' + (h - padding) + ')')
+    .call(xAxis)
+
+  svg.append('g') // Create Y axis
+    .attr('class', 'axis')
+    .attr('transform', 'translate(' + padding + ',0)')
+    .call(yAxis)
 
   socket.on('newTweet', function(tweet){
       var obj = {}
@@ -32,6 +32,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       var rand1 = Math.random()
       var rand2 = Math.random()
       var rando = Math.random()
+      var rando2 = Math.random()
       for (var i = 0; i < arr.length; i++) {
         if(dictionary[arr[i]]){
           // console.log("'" + arr[i] +  "' exists in dictionary")
@@ -40,14 +41,14 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           count ++
         }
       }
-      if (rando > .1) {
-        if (rand1 > .5) {
+      if (rando > .5) {
+        if (rando2 > .5) {
           score += rand1
         }
         else{
           score -= rand1
         }
-        if (rand2 > .5) {
+        if (rando2 > .5) {
           count += rand2
         }
         else{
@@ -63,14 +64,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       var newNumber1 = score
       var newNumber2 = count
       dataset.push([newNumber1, newNumber2])
-
-      if ($scope.streaming == false){
-        console.log('IN THE IF');
-        $http.get('/stop').success(function(date){
-
-        })
-      }
-      ///////
+      ///////Scales
       var xScale = d3.scale.linear()
       .domain([-100, 100])
       .range([padding, w - padding])
@@ -114,14 +108,9 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
 
 
           var color = 'rgb(' + r + ',' + g + ',' + b + ')'
-          console.log('color is: ' + color)
+          // console.log('color is: ' + color)
           return color
         })
-      // .transition()
-      //   // .duration(2000)
-      //   // .ease(Math.sqrt)
-      //   // .attr("r", 100)
-      //   .style("fill-opacity", 1)
 
         var r = 0
         var b = 0
@@ -138,8 +127,8 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           g == 255;
         }
         var color = 'rgb(' + r + ',' + g + ',' + b + ')'
-        console.log(obj.tweet);
-        console.log('obj color is: ' + color);
+        // console.log(obj.tweet);
+        // console.log('obj color is: ' + color);
         obj.color = color
       svg.insert("circle", "rect")
         .attr("cx", xScale(score))
@@ -154,7 +143,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
         .attr("r", 100)
         .style("stroke-opacity", 1e-6)
         .remove();
-      // svg.selectAll('text') //labels the dpts
+      // svg.selectAll('text') //labels the dots
       //   .data(dataset)
       //   .enter()
       //   .append('text')
@@ -219,7 +208,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       console.log('DATA!');
       console.log(data)
     })
-    console.log(dataset);
+    console.log(dataset.toString());
   }
 
   $scope.restart=function(){ //restarts the tweet stream when you press the button
