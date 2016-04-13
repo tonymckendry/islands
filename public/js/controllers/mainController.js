@@ -7,7 +7,16 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
 
   $scope.clearData = function(){
     dataset = []
-    $scope.digest()
+    $scope.tweets = []
+    $scope.total = 0
+    $scope.average = 0
+    $scope.negWidth = 0
+    $scope.posWidth = 0
+    d3.selectAll("svg > *").remove();
+    var svg = d3.select('div.a') //creates the canvas
+      .append('svg')
+      .attr('width', w)
+    $scope.$digest()
   }
 
   $scope.hideSplash = function(){
@@ -29,7 +38,7 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
   //   .call(yAxis)
 
   socket.on('newTweet', function(tweet){
-      console.log(tweet);
+      // console.log(tweet);
       var obj = {}
       obj.user = tweet.user.name
       obj.tweet = tweet.text
@@ -138,8 +147,6 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
           g == 255;
         }
         var color = 'rgb(' + r + ',' + g + ',' + b + ')'
-        // console.log(obj.tweet);
-        // console.log('obj color is: ' + color);
         obj.color = color
       svg.insert("circle", "rect")
         .attr("cx", xScale(score))
@@ -173,13 +180,53 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       var average = 0
       var counter = 0
       for (var i = 0; i < dataset.length; i++) {
-        if (dataset[i][0] !== 0) {
+        if (dataset[i][0] > 3 || dataset[i][0] < -3) {
           average += dataset[i][0]
           counter ++
         }
       }
       average = (average / counter).toFixed(2)
       $scope.average = average
+      $scope.emoji = "😶"
+      if (average < 0 && average > -3 || average > 0 && average < 3 ) {
+        $scope.emoji = "😐"
+      }
+      if (average < -3 && average > -10) {
+        $scope.emoji = "😑"
+      }
+      if (average > 3 && average < 10 ) {
+        $scope.emoji = "🙂"
+      }
+      if (average < -10 && average > -20) {
+        $scope.emoji = "🙁"
+      }
+      if (average > 10 && average < 20 ) {
+        $scope.emoji = "😃"
+      }
+      if (average < -20 && average > -30) {
+        $scope.emoji = "😧"
+      }
+      if (average > 20 && average < 30 ) {
+        $scope.emoji = "😋"
+      }
+      if (average < -30 && average > -40) {
+        $scope.emoji = "😠"
+      }
+      if (average > 30 && average < 40 ) {
+        $scope.emoji = "😁"
+      }
+      if (average < -40 && average > -50) {
+        $scope.emoji = "😡"
+      }
+      if (average > 40 && average < 50 ) {
+        $scope.emoji = "😊"
+      }
+      if (average < -50 && average > -75) {
+        $scope.emoji = "💩"
+      }
+      if (average > 50 && average < 75 ) {
+        $scope.emoji = "😍"
+      }
       $scope.negWidth = parseInt(average*-1);
       $scope.posWidth = parseInt(average);
       var avr = 0
@@ -219,7 +266,6 @@ app.controller('mainController', function($scope, $rootScope, $location, socket,
       console.log('DATA!');
       console.log(data)
     })
-    console.log(dataset.toString());
   }
 
  });

@@ -32,7 +32,7 @@
 <div class='container' ng-show='showGraph'>
   <div class='row'>
     <div class='col-md-9 leftContainer'>
-      <div class='row'>
+      <div class='row blackBack'>
         <div class='col-md-4'>
             <button ng-click='clearData()' data-toggle='modal' data-target='#myModal'>New Search</button>
             <button ng-click='stopIt()'>Stop it</button>
@@ -40,8 +40,11 @@
         <div class='col-md-4'>
           <h3>Tweets: {{total}}</h3>
         </div>
-        <div class='col-md-4'>
+        <div class='col-md-3'>
           <h3>Average: <span ng-style="{'color':avcolor}">{{average}}</span></h3>
+        </div>
+        <div class='col-md-1'>
+          <h3 class='emoji'>{{emoji}}</h3>
         </div>
         <hr>
       </div>
@@ -63,7 +66,7 @@
         <div class='a'></div>
       </div>
     </div>
-      <div class='tweetFeed col-md-3'>
+      <div class='tweetFeed col-md-3 blackBack'>
         <div class='feedTitle'><h3>Tweet Feed</h3></div>
         <p class='tweetText fadein' ng-repeat='tweet in tweets' ng-style="{'color':tweet.color}"><b>@{{tweet.user}}:</b> {{tweet.tweet}}</p>
       </div>
