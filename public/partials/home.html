@@ -15,6 +15,29 @@
     </div>
   </div>
 </div>
+<div class='modal' id='infoModal' tabindex="-1" role='dialog'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h2>The AFINN Dictionary</h2>
+        <h4>A Wordlist for Sentiment Analysis in Microblogs</h4>
+        <p>Finn Nielsen - Technical University of Denmark</p>
+      </div>
+      <div class='modal-body'>
+        <ul>
+          <p>Love: 3 points</p>
+          <p>Hate: -3 points</p>
+          <p>Awesome: 4 points</p>
+          <p>Badass: -3 points (?)</p>
+          <p>Outstanding: 5 Points</p>
+          <p>Prick: -5 points</p>
+        </ul>
+      </div>
+      <div class='modal-footer'>
+      </div>
+    </div>
+  </div>
+</div>
 <!--Splash Page-->
 <div class='container' ng-show='showSplash'>
   <div class='row'>
@@ -44,7 +67,7 @@
           <h3>Average: <span ng-style="{'color':avcolor}">{{average}}</span></h3>
         </div>
         <div class='col-md-1'>
-          <h3 class='emoji'>{{emoji}}</h3>
+          <h3 class='emoji'><a data-toggle='modal' data-target='#infoModal'>{{emoji}}</a></h3>
         </div>
         <hr>
       </div>
@@ -63,6 +86,11 @@
         </div>
       </div>
       <div class='row'>
+        <img class='theAxis' src="../img/axis.png" alt="">
+        <p class='neutralLabel'>Neutral</p>
+        <p class='negativeLabel'>Negative</p>
+        <p class='positiveLabel'>Positive</p>
+        <p class='characterLabel'>Character Count</p>
         <div class='a'></div>
       </div>
     </div>
