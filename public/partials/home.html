@@ -1,0 +1,21 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-6'>
+      <div class='row' ng-repeat='rows in matrix'>
+        <div class='col-md-1 cell' ng-repeat='col in rows track by $index'>{{col}}</div>
+      </div>
+    </div>
+    <div class='col-md-6'>
+      <div class='row'>
+        <div class='col-md-12'>
+          Rows: <input ng-model='rows' type="number">
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-12'>
+          Columns: <input ng-model='columns' type="number">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
