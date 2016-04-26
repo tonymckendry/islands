@@ -26,7 +26,18 @@ app.controller('mainController', function($scope, $rootScope, $location, $http) 
     })
   })
 
-  console.log(locationOfOnes)
+  var currentIndex = 0
+  var currentCell = locationOfOnes[currentIndex]
+  var currentValue = $scope.matrix[currentCell[0]][currentCell[1]]
+  console.log(currentCell)
+
+  function checkRight(){
+    
+  }
+
+
+
+  // console.log(locationOfOnes)
 
 
   $scope.setRows = function(rowNum){
